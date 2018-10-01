@@ -3,7 +3,9 @@
 $conn = pg_connect(getenv("DATABASE_URL"));
 
 
-echo $conn; 
+$res = pg_query($conn, "SELECT * FROM User");
+
+echo $res;  
 
 
 ?>
