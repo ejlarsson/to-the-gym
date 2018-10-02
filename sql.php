@@ -1,8 +1,5 @@
 <?php 
 
-$exercise = 'tgg."exercise"';
-$exercise_type = 'tgg."exercise_type"';
-$bid = 'tgg."bid"';
 
 global $conn;
 
@@ -28,10 +25,10 @@ function validateUserPassword($login, $password)
 	return $res != '';
 }
 
-function retrieveExerciseForPeriod($period) {
+/*function retrieveExerciseForPeriod($period) {
 	$res = pg_query('SELECT * FROM '$exercise);//' e INNER JOIN '$exercise_type' et ON et.id = e.exercise_type_id INNER JOIN 
 	return $res;
-}
+}*/
 
 
 ?>
