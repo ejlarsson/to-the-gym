@@ -1,6 +1,6 @@
 <?php
 
-if (isset($_POST['login']) && isset($_SESSION['user_uuid'])) {
+if (isset($_SESSION['user_uuid'])) {
 	
 	include_once 'sql.php';
 	
