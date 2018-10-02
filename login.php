@@ -9,6 +9,7 @@ if (isset($_POST['login']) && isset($_POST['password'])) //when form submitted
   connect();
   echo "after-connect";    
   echo validateUserPassword($_POST['login'], $_POST['password']); 
+  echo "test";
   if (validateUserPassword($_POST['login'], $_POST['password']) == TRUE)
   {
     $_SESSION['login'] = $_POST['login']; //write login to server storage
