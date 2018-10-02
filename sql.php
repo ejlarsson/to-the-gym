@@ -29,7 +29,7 @@ function createUser($conn, $login, $name, $password) {
 	} else {
 		$arr = array("login" => $login, "name" => $name);
 	}
-	$res = pg_insert($conn, 'ttg."user"', $arr, PG_DML_ESCAPE);
+	$res = pg_insert($conn, "user", $arr, PG_DML_ESCAPE);
 	
 	if ($res) {
 		echo "POST data is successfully logged\n";
