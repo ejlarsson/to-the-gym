@@ -1,6 +1,9 @@
 <?php
+session_start(); //gets session id from cookies, or prepa
 
-if (isset($_SESSION['user_uuid'])) {
+if (session_id() == '' || !isset($_SESSION['user_uuid'])) {
+	header('Location: /'); //redirect to main
+} else {
 	
 	include_once 'sql.php';
 	
@@ -27,8 +30,6 @@ if (isset($_SESSION['user_uuid'])) {
 
 <?php	
 
-} else {
-	header('Location: /'); //redirect to main
 }
 
 ?>
