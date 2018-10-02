@@ -22,8 +22,8 @@ if (session_id() == '' || !isset($_SESSION['user_uuid'])) {
      <? while ($row = pg_fetch_assoc($res)) { ?>
      <tr>
        <td><? echo $row['period']; ?></td>
-       <td><? if (!isset($row['bid'])) { echo '<a href="/create-bid.php?user=' . $user_uuid . '">Add</a>'; } else { echo $row['bid']; } ?></td>
-       <td><? if (!isset($row['total'])) { echo '0'; } else { echo $row['total']; } ?></td>
+       <td><? if (!isset($row['bid'])) { echo '<a href="/create-bid.php?user=' . $user_uuid . '&period=' . $row['period'] . '">Add</a>'; } else { echo $row['bid']; } ?></td>
+       <td><? if (!isset($row['total'])) { echo '<a href="/exercises.php?user=' . $user_uuid . '&period=' . $row['period'] . '">0</a>'; } else { echo $row['total']; } ?></td>
      </tr>
      <? } ?>
    </table>
