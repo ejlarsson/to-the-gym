@@ -14,7 +14,7 @@ if (session_id() == '' || !isset($_SESSION['login'])) { //if sid exists and logi
 
 } else {
 
-  echo "Hi, " . $_SESSION['user_name'] . " - " . $_SESSION['user_uuid'];
+  echo "Hi, " . $_SESSION['user_name'];
 ?>
 
 <br><a href="/logout.php">Logout</a>
