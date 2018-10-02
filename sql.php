@@ -8,7 +8,7 @@ function getConnection() {
 	return $conn;
 }
 	
-function validateUserPassword($conn, $login, $password) {
+function validateUserPassword($conn, $login, $password = NULL) {
 	if ($password == '' || !isset($password)) {
 		$query = 'SELECT * FROM ttg.exercise_user WHERE login = $1 AND not_secure_pw is null';
 	}
@@ -19,7 +19,7 @@ function validateUserPassword($conn, $login, $password) {
 	return pg_query_params($conn, $query, array($login, $password)); 
 }
 
-function createUser($conn, $login, $name, $password) {
+function createUser($conn, $login, $name, $password = NULL) {
 	if (isset($password)) {
 		$arr = array("login" => $login, "name" => $name, "not_secure_pw" => $password);
 	} else {
@@ -34,6 +34,16 @@ function createUser($conn, $login, $name, $password) {
 		echo "User must have sent wrong inputs\n";
 		return FALSE;
 	}
+}
+
+function queryBids($conn, $user_uuid = NULL, $period = NULL) {
+	$query = 'SELECT p.name AS period, res.total AS number, b.number AS bid, b.bid_uuid AS bid_uuid FROM ttg.exercise_user eu INNER JOIN ttg.bid b ON eu.id = b.exercise_user_id RIGHT JOIN ttg.period p ON p.id = b.period_id LEFT JOIN (SELECT COUNT(ee.id) AS total, ee.bid_id AS bid FROM ttg.exercise ee GROUP BY ee.bid_id) res ON res.bid = b.id';
+	if (isset($user_uuid)) $query = $query . ' WHERE eu.uuid = $1';
+	if (isset($period))	$query = $query . ' AND p.name = $2';
+	
+	$query = $query . ' ORDER BY p.id ASC';
+	
+	return pg_query_params($conn, $query, array($user_uuid, $period));
 }
 
 /*function retrieveExerciseForPeriod($period) {
