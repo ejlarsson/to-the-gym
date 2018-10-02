@@ -13,9 +13,10 @@ if (isset($_POST['login'])) {
 	}
 	
 	echo $res;
+	echo pg_fetch_result($res, 0, 0);
 	
 	if ($res) {
-		echo "asdf";
+		echo pg_fetch_result($res, 0, 0);
 		$_SESSION['user_uuid'] = pg_fetch_result($res, 0, 0);
 		echo $_SESSION['user_uuid'];
 		$_SESSION['user_name'] = pg_fetch_result($res, 0, 0);
