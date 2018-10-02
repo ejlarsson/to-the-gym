@@ -7,9 +7,11 @@ if (isset($_POST['login']) && isset($_POST['password'])) {
 	include_once 'sql.php';
 	$res = validateUserPassword(getConnection(), $_POST['login'], $_POST['password']);
 	if ($res) {
-		$_SESSION['login'] = $_POST['login']; //write login to server storage
-		$_SESSION['user_uuid'] = pg_fetch_result($res, 0, 0);
-		$_SESSION['user_name'] = pg_fetch_result($res, 0, 1);
+		while ($row = pg_fetch_assoc($res)) {
+			$_SESSION['user_uuid'] = $row['uuid']
+			$_SESSION['user_name'] = $row['name']
+		}
+			
 		header('Location: /'); //redirect to main
 	} else {
 		echo "<script>alert('Wrong login or password');</script>";
