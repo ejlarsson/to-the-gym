@@ -10,7 +10,7 @@ if (isset($_POST['login']) && isset($_POST['password'])) {
 		$_SESSION['login'] = $_POST['login']; //write login to server storage
 		$_SESSION['uuid'] = pg_fetch_assoc($result)[0]['uuid'];
 		echo $_SESSION['uuid'];
-		header('Location: /'); //redirect to main
+		//header('Location: /'); //redirect to main
 	} else {
 		echo "<script>alert('Wrong login or password');</script>";
 		echo "<noscript>Wrong login or password</noscript>";
