@@ -38,6 +38,9 @@ function createUser($conn, $login, $name, $password = NULL) {
 }
 
 function queryBids($conn, $user_uuid = NULL, $period = NULL) {
+	
+	$query = 'SELECT p.name AS period, q2.bid AS bid, q2.total AS total FROM ttg.period p LEFT JOIN (SELECT b.period_id AS pid, b.number AS bid, q1.total AS total FROM ttg.bid b INNER JOIN ttg.exercise_user eu ON eu.id = b.exercise_user_id LEFT JOIN (SELECT ee.bid_id AS bid, COUNT(ee.id) AS total FROM ttg.exercise ee GROUP BY ee.bid_id) q1 ON q1.bid = b.id';
+
 	$arr = array();
 	if (isset($user_uuid)) { 
 		$query = $query . ' WHERE eu.id = $1) q2 ON q2.pid = p.id';
