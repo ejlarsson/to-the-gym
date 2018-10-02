@@ -17,11 +17,11 @@ function connect()
 
 function validateUserPassword($login, $password)
 {
-	if ($password == null) {
-		$query = 'SELECT * FROM tgg."user" WHERE login = '$login' AND not_secure_pw is null';
+	if ($password == '' || !isset($password)) {
+		$query = 'SELECT * FROM tgg."user" WHERE login = ' . $login . ' AND not_secure_pw is null';
 	}
 	else {
-		$query = 'SELECT * FROM tgg."user" WHERE login = '$login' AND not_secure_pw = '$password;
+		$query = 'SELECT * FROM tgg."user" WHERE login = ' . $login . ' AND not_secure_pw = ' . $password;
 	}
 	$res = pg_query($conn, $query); 
 	
