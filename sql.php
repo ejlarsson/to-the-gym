@@ -16,13 +16,13 @@ function connect()
 	}
 }
 
-function validateUserPassword($user, $password)
+function validateUserPassword($login, $password)
 {
 	if ($password == null) {
-		$query = 'SELECT * FROM '$user' WHERE login = '$user' AND not_secure_pw is null';
+		$query = 'SELECT * FROM '$user' WHERE login = '$login' AND not_secure_pw is null';
 	}
 	else {
-		$query = 'SELECT * FROM '$user' WHERE login = '$user' AND not_secure_pw = '$password;
+		$query = 'SELECT * FROM '$user' WHERE login = '$login' AND not_secure_pw = '$password;
 	}
 	$res = pg_query($conn, $query); 
 	
