@@ -43,7 +43,7 @@ function queryBids($conn, $user_uuid = NULL, $period = NULL) {
 
 	$arr = array();
 	if (isset($user_uuid)) { 
-		$query = $query . ' WHERE eu.id = $1) q2 ON q2.pid = p.id';
+		$query = $query . ' WHERE eu.uuid = $1) q2 ON q2.pid = p.id';
 		$arr[] = $user_uuid;
 		if (isset($period))	{
 			$query = $query . '  WHERE p.name = $2';
