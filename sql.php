@@ -13,7 +13,7 @@ function validateUserPassword($conn, $login, $password) {
 		$query = 'SELECT * FROM exercise_user WHERE login = $1 AND not_secure_pw is null';
 	}
 	else {
-		$query = 'SELECT * FROM exercise_user WHERE login = $1 AND not_secure_pw = $2';
+		$query = 'SELECT * FROM ttg.exercise_user WHERE login = $1 AND not_secure_pw = $2';
 	}
 	
 	$res = pg_query_params($conn, $query, array($login, $password)); 
