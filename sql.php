@@ -11,10 +11,10 @@ function getConnection() {
 function validateUserPassword($conn, $login, $password = NULL) {
 	if (isset($password)) {
 		$arr = array("login" => $login, "not_secure_pw" => $password);
-		$query = 'SELECT uuid AS UUID, name AS NAME FROM ttg.exercise_user WHERE login = $1 AND not_secure_pw = $2';
+		$query = 'SELECT uuid, name FROM ttg.exercise_user WHERE login = $1 AND not_secure_pw = $2';
 	} else {
 		$arr = array("login" => $login);
-		$query = 'SELECT uuid AS UUID, name AS NAME FROM ttg.exercise_user WHERE login = $1 AND not_secure_pw is null';
+		$query = 'SELECT uuid, name FROM ttg.exercise_user WHERE login = $1 AND not_secure_pw is null';
 	}
 	
 	return pg_query_params($conn, $query, $arr); 

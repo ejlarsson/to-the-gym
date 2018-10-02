@@ -9,8 +9,8 @@ if (isset($_POST['login']) && isset($_POST['password'])) {
 	if ($res) {
 		while ($row = pg_fetch_assoc($res)) {
 			$_SESSION['login'] = $_POST['login'];
-			$_SESSION['user_uuid'] = $row['UUID'];
-			$_SESSION['user_name'] = $row['NAME'];|
+			$_SESSION['user_uuid'] = $row['uuid'];
+			$_SESSION['user_name'] = $row['name'];
 		}
 			
 		header('Location: /'); //redirect to main
