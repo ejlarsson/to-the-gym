@@ -13,17 +13,13 @@ if (isset($_POST['login'])) {
 	}
 	
 	if ($res) {
-		$_SESSION['login'] = $_POST['login'];
-		echo $_SESSION['login'];
+		$row = pg_fetch_array($res);
 		
-		while ($row = pg_fetch_assoc($res)) {
-			echo $row;
-			$_SESSION['user_uuid'] = $row['uuid'];
-			echo $_SESSION['user_uuid'];
-			$_SESSION['user_name'] = $row['name'];
-			echo $_SESSION['user_name'];
-		}
-			
+		$_SESSION['user_uuid'] = $row[0];
+		echo $_SESSION['user_uuid'];
+		$_SESSION['user_name'] = $row[1];
+		echo $_SESSION['user_name'];
+				
 		//header('Location: /'); //redirect to main
 	} else {
 		echo "<script>alert('Wrong login or password');</script>";
