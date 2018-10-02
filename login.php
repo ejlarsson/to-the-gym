@@ -8,8 +8,9 @@ if (isset($_POST['login']) && isset($_POST['password'])) {
 	$res = validateUserPassword(getConnection(), $_POST['login'], $_POST['password']);
 	if ($res) {
 		while ($row = pg_fetch_assoc($res)) {
-			$_SESSION['user_uuid'] = $row['uuid'];
-			$_SESSION['user_name'] = $row['name'];
+			$_SESSION['login'] = $_POST['login']
+			$_SESSION['user_uuid'] = $row['UUID'];
+			$_SESSION['user_name'] = $row['NAME'];|
 		}
 			
 		header('Location: /'); //redirect to main
