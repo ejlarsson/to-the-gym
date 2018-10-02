@@ -6,8 +6,7 @@ if (isset($_POST['login']) && isset($_SESSION['user_uuid'])) {
 	
 	$user_uuid = $_SESSION['user_uuid'];
 	
-	$conn = connect();
-	$res = queryBids($conn, $user_uuid);
+	$res = queryBids(getConnection(), $user_uuid, NULL);
 
 ?>
 
@@ -28,6 +27,8 @@ if (isset($_POST['login']) && isset($_SESSION['user_uuid'])) {
 
 <?php	
 
+} else {
+	header('Location: /'); //redirect to main
 }
 
 ?>
