@@ -12,6 +12,8 @@ if (isset($_POST['login'])) {
 		$res = validateUserPassword(getConnection(), $_POST['login']);
 	}
 	
+	echo $res;
+	
 	if ($res) {
 		echo "asdf";
 		$_SESSION['user_uuid'] = pg_fetch_result($res, 0, 0);
