@@ -2,10 +2,14 @@
 
 session_start();
 
-if (isset($_POST['login']) && isset($_POST['password'])) {
+if (isset($_POST['login'])) {
 	
 	include_once 'sql.php';
-	$res = validateUserPassword(getConnection(), $_POST['login'], $_POST['password']);
+	
+	if (isset($_POST['password']) $res = validateUserPassword(getConnection(), $_POST['login'], $_POST['password']);
+	else $res = validateUserPassword(getConnection(), $_POST['login']);
+	
+	
 	if ($res) {
 		while ($row = pg_fetch_assoc($res)) {
 			$_SESSION['login'] = $_POST['login'];
