@@ -10,7 +10,7 @@ function getConnection() {
 	
 function validateUserPassword($conn, $login, $password) {
 	if ($password == '' || !isset($password)) {
-		$query = 'SELECT * FROM exercise_user WHERE login = $1 AND not_secure_pw is null';
+		$query = 'SELECT * FROM ttg.exercise_user WHERE login = $1 AND not_secure_pw is null';
 	}
 	else {
 		$query = 'SELECT * FROM ttg.exercise_user WHERE login = $1 AND not_secure_pw = $2';
@@ -31,7 +31,7 @@ function createUser($conn, $login, $name, $password) {
 	} else {
 		$arr = array("login" => $login, "name" => $name);
 	}
-	$res = pg_insert($conn, 'exercise_user', $arr);
+	$res = pg_insert($conn, 'ttg.exercise_user', $arr);
 	
 	if ($res) {
 		echo "POST data is successfully logged\n";
