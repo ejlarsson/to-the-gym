@@ -14,10 +14,9 @@ if (isset($_POST['login'])) {
 	
 	if ($res) {
 		
+		$_SESSION['login'] = $_POST['login'];
 		$_SESSION['user_uuid'] = pg_fetch_result($res, 0, 0);
-		echo $_SESSION['user_uuid'];
-		echo "<br>";
-		$_SESSION['user_name'] = pg_fetch_result($res, 0, 0);
+		$_SESSION['user_name'] = pg_fetch_result($res, 0, 1);
 		echo $_SESSION['user_name'];
 				
 		//header('Location: /'); //redirect to main
