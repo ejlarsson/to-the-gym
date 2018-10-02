@@ -4,6 +4,8 @@ DROP TABLE IF EXISTS exercise_user;
 DROP TABLE IF EXISTS period;
 DROP TABLE IF EXISTS exercise_type;
 
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+
 CREATE TABLE period (
  id serial PRIMARY KEY,
  name VARCHAR (50) UNIQUE NOT NULL
@@ -17,6 +19,7 @@ CREATE TABLE exercise_type (
 
 CREATE TABLE exercise_user (
  id serial PRIMARY KEY,
+ uuid UUID UNIQUE NOT NULL DEFAULT uuid_generate_v4(),
  not_secure_pw text,
  login VARCHAR (50) UNIQUE NOT NULL,
  name VARCHAR (255) NOT NULL
@@ -25,7 +28,7 @@ CREATE TABLE exercise_user (
 CREATE TABLE bid (
  exercise_user_id integer NOT NULL,
  period_id integer NOT NULL,
- bid_uuid UUID UNIQUE NOT NULL,
+ bid_uuid UUID UNIQUE NOT NULL DEFAULT uuid_generate_v4(),
  number smallint NOT NULL,
  PRIMARY KEY (exercise_user_id, period_id),
  CONSTRAINT bid_user_fkey FOREIGN KEY (exercise_user_id)
@@ -37,7 +40,8 @@ CREATE TABLE bid (
 ); 
 
 CREATE TABLE exercise (
- id UUID PRIMARY KEY,
+ id serial PRIMARY KEY,
+ uuid UUID UNIQUE NOT NULL DEFAULT uuid_generate_v4(),
  bid_uuid UUID NOT NULL,
  exercise_type_id integer NOT NULL,
  exercise_duration_minutes smallint,

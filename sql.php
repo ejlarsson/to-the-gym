@@ -13,16 +13,10 @@ function validateUserPassword($conn, $login, $password) {
 		$query = 'SELECT * FROM ttg.exercise_user WHERE login = $1 AND not_secure_pw is null';
 	}
 	else {
-		$query = 'SELECT * FROM ttg.exercise_user WHERE login = $1 AND not_secure_pw = $2';
+		$query = 'SELECT uuid, name FROM ttg.exercise_user WHERE login = $1 AND not_secure_pw = $2';
 	}
 	
-	$res = pg_query_params($conn, $query, array($login, $password)); 
-	
-	if ($res) {
-		return TRUE;
-	} else {
-		return FALSE;
-	}
+	return pg_query_params($conn, $query, array($login, $password)); 
 }
 
 function createUser($conn, $login, $name, $password) {

@@ -6,7 +6,7 @@ if (isset($_POST['login']) && isset($_POST['name'])) {
 	
 	include_once 'sql.php';
 		
-	if (createUser(getConnection(), $_POST['login'], $_POST['password'], $_POST['name']) == TRUE) {
+	if (createUser(getConnection(), $_POST['login'], $_POST['name'], $_POST['password']) == TRUE) {
 		$_SESSION['login'] = $_POST['login']; //write login to server storage
 		header('Location: /'); //redirect to main
 	} else {
@@ -23,5 +23,5 @@ if (isset($_POST['login']) && isset($_POST['name'])) {
 	Name:<br><input name="name"><br>
 	Bruk ikke et passord du vanligvis bruker da jeg ikke giddet at gjøre dette sikkert med kryptering. Happy hacking...<br>
 	Kan nevnes at jeg ikke giddet skape noen valideringersfeil etc. så får du feil så er det noe som er feil med det du skrev inn :D
-	<input type="submit">
+	<br><input type="submit">
 </form>
