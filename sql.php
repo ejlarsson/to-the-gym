@@ -1,6 +1,5 @@
 <?php 
 
-$user = 'tgg."user"';
 $exercise = 'tgg."exercise"';
 $exercise_type = 'tgg."exercise_type"';
 $bid = 'tgg."bid"';
@@ -19,10 +18,10 @@ function connect()
 function validateUserPassword($login, $password)
 {
 	if ($password == null) {
-		$query = 'SELECT * FROM '$user' WHERE login = '$login' AND not_secure_pw is null';
+		$query = 'SELECT * FROM tgg."user" WHERE login = '$login' AND not_secure_pw is null';
 	}
 	else {
-		$query = 'SELECT * FROM '$user' WHERE login = '$login' AND not_secure_pw = '$password;
+		$query = 'SELECT * FROM tgg."user" WHERE login = '$login' AND not_secure_pw = '$password;
 	}
 	$res = pg_query($conn, $query); 
 	
