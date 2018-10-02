@@ -5,7 +5,7 @@ session_start();
 if (isset($_POST['login']) && isset($_POST['password'])) //when form submitted
 {
   include 'sql.php';
-  
+  connect();
   if (validateUserPassword($_POST['login'], $_POST['password']))
   {
     $_SESSION['login'] = $_POST['login']; //write login to server storage
