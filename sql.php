@@ -10,10 +10,10 @@ function getConnection() {
 	
 function validateUserPassword($conn, $login, $password) {
 	if ($password == '' || !isset($password)) {
-		$query = 'SELECT * FROM ttg."user" WHERE login = \'' . $login . '\' AND not_secure_pw is null';
+		$query = 'SELECT * FROM user WHERE login = \'' . $login . '\' AND not_secure_pw is null';
 	}
 	else {
-		$query = 'SELECT * FROM ttg."user" WHERE login = \'' . $login . '\' AND not_secure_pw = \'' . $password . '\'';
+		$query = 'SELECT * FROM user WHERE login = \'' . $login . '\' AND not_secure_pw = \'' . $password . '\'';
 	}
 
 	$res = pg_query($conn, $query); 
@@ -29,7 +29,7 @@ function createUser($conn, $login, $name, $password) {
 	} else {
 		$arr = array("login" => $login, "name" => $name);
 	}
-	$res = pg_insert($conn, "user", $arr);
+	$res = pg_insert($conn, 'user', $arr);
 	
 	if ($res) {
 		echo "POST data is successfully logged\n";
