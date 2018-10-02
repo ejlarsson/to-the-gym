@@ -6,8 +6,11 @@ if (isset($_POST['login'])) {
 	
 	include_once 'sql.php';
 	
-	if (isset($_POST['password']) $res = validateUserPassword(getConnection(), $_POST['login'], $_POST['password']);
-	else $res = validateUserPassword(getConnection(), $_POST['login']);
+	if (isset($_POST['password'])) { 
+		$res = validateUserPassword(getConnection(), $_POST['login'], $_POST['password']);
+	} else { 
+		$res = validateUserPassword(getConnection(), $_POST['login']);
+	}
 	
 	
 	if ($res) {
