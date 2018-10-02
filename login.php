@@ -9,11 +9,14 @@ if (isset($_POST['login']) && isset($_POST['password'])) {
 	if ($res) {
 		while ($row = pg_fetch_assoc($res)) {
 			$_SESSION['login'] = $_POST['login'];
+			echo $_SESSION['login'];
 			$_SESSION['user_uuid'] = $row['uuid'];
+			echo $_SESSION['user_uuid'];
 			$_SESSION['user_name'] = $row['name'];
+			echo $_SESSION['user_name'];
 		}
 			
-		header('Location: /'); //redirect to main
+		//header('Location: /'); //redirect to main
 	} else {
 		echo "<script>alert('Wrong login or password');</script>";
 		echo "<noscript>Wrong login or password</noscript>";
