@@ -21,6 +21,7 @@ function validateUserPassword($login, $password)
 		$query = 'SELECT * FROM tgg."user" WHERE login = ' . $login . ' AND not_secure_pw = ' . $password;
 	}
 	$res = pg_query($conn, $query); 
+	echo $res;
 	if (!$res) return FALSE;
 	if (pg_num_rows($res) == 0) return FALSE;
 	return TRUE;
