@@ -23,10 +23,6 @@ function validateUserPassword($conn, $login, $password) {
 	return TRUE;
 }
 
-function createUser($conn, $login, $name) {
-	return createUser($conn, $login, $name, NULL);
-}
-
 function createUser($conn, $login, $name, $password) {
 	if (isset($password)) {
 		$arr = array("login" => $login, "name" => $name, "not_secure_pw" => $password);

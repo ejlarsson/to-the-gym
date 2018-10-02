@@ -2,10 +2,10 @@
 
 session_start();
 
-if (isset($_POST['login']) && isset($_POST['password']) && isset($_POST['name'])) {
+if (isset($_POST['login']) && isset($_POST['name'])) {
 	
 	include_once 'sql.php';
-  
+		
 	if (createUser(getConnection(), $_POST['login'], $_POST['password'], $_POST['name']) == TRUE) {
 		$_SESSION['login'] = $_POST['login']; //write login to server storage
 		header('Location: /'); //redirect to main
