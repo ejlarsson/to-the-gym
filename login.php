@@ -12,13 +12,11 @@ if (isset($_POST['login'])) {
 		$res = validateUserPassword(getConnection(), $_POST['login'], NULL);
 	}
 	
-	$row = pg_fetch_row($res);
-	echo $row[0] . $row[1];
-	
 	if ($res) {
 		
 		$_SESSION['user_uuid'] = pg_fetch_result($res, 0, 0);
 		echo $_SESSION['user_uuid'];
+		echo "<br>";
 		$_SESSION['user_name'] = pg_fetch_result($res, 0, 0);
 		echo $_SESSION['user_name'];
 				
