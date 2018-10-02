@@ -6,10 +6,10 @@ if (isset($_POST['login'])) {
 	
 	include_once 'sql.php';
 	
-	if (isset($_POST['password'])) { 
+	if (isset($_POST['password']) && $_POST['password'] != '') { 
 		$res = validateUserPassword(getConnection(), $_POST['login'], $_POST['password']);
 	} else { 
-		$res = validateUserPassword(getConnection(), $_POST['login']);
+		$res = validateUserPassword(getConnection(), $_POST['login'], NULL);
 	}
 	
 	$row = pg_fetch_row($res);
