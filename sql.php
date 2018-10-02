@@ -10,19 +10,19 @@ function getConnection() {
 	
 function validateUserPassword($conn, $login, $password) {
 	if ($password == '' || !isset($password)) {
-		$query = 'SELECT * FROM exercise_user WHERE login = \'' . $login . '\' AND not_secure_pw is null';
+		$query = 'SELECT * FROM exercise_user WHERE login = $1 AND not_secure_pw is null';
 	}
 	else {
-		$query = 'SELECT * FROM exercise_user WHERE login = \'' . $login . '\' AND not_secure_pw = \'' . $password . '\'';
+		$query = 'SELECT * FROM exercise_user WHERE login = $1 AND not_secure_pw = $2';
 	}
-
-	echo $query;
 	
-	$res = pg_query($conn, $query); 
+	$res = pg_query_params($conn, $query, array($login, $password)); 
 	
-	if (!$res) return FALSE;
-	if (pg_num_rows($res) == 0) return FALSE;
-	return TRUE;
+	if ($res) {
+		return TRUE;
+	} else {
+		return FALSE;
+	}
 }
 
 function createUser($conn, $login, $name, $password) {
