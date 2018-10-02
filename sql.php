@@ -1,18 +1,14 @@
 <?php 
-
-
-global $conn;
-
-function connect() 
-{
+function getConnection() {
 	$conn = pg_connect(getenv("DATABASE_URL"));
 	if (!$conn) {
 		echo "An error occurred.\n";
 		exit;
 	}
+	return $conn;
 }
-
-function validateUserPassword($login, $password)
+	
+function validateUserPassword($conn, $login, $password)
 {
 	if ($password == '' || !isset($password)) {
 		$query = 'SELECT * FROM ttg."user" WHERE login = \'' . $login . '\' AND not_secure_pw is null';
@@ -21,8 +17,6 @@ function validateUserPassword($login, $password)
 		$query = 'SELECT * FROM ttg."user" WHERE login = \'' . $login . '\' AND not_secure_pw = \'' . $password . '\'';
 	}
 
-	echo $query;
-	
 	$res = pg_query($conn, $query); 
 
 	echo $res;
