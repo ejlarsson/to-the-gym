@@ -8,7 +8,7 @@ if (isset($_POST['login']) && isset($_POST['password'])) //when form submitted
   echo "pre-connect";    
   connect();
   echo "after-connect";    
-  echo validateUserPassword($_POST['login'], $_POST['password']); 
+  echo $_POST['login'] . $_POST['password']; 
   echo "test";
   if (validateUserPassword($_POST['login'], $_POST['password']) == TRUE)
   {
