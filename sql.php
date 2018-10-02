@@ -16,6 +16,8 @@ function validateUserPassword($conn, $login, $password) {
 		$query = 'SELECT * FROM exercise_user WHERE login = \'' . $login . '\' AND not_secure_pw = \'' . $password . '\'';
 	}
 
+	echo $query;
+	
 	$res = pg_query($conn, $query); 
 	
 	if (!$res) return FALSE;
