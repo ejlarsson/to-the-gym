@@ -10,7 +10,7 @@ function getConnection() {
 	
 function validateUserPassword($conn, $login, $password = NULL) {
 	if ($password == '' || !isset($password)) {
-		$query = 'SELECT * FROM ttg.exercise_user WHERE login = $1 AND not_secure_pw is null';
+		$query = 'SELECT uuid, name FROM ttg.exercise_user WHERE login = $1 AND not_secure_pw is null';
 	}
 	else {
 		$query = 'SELECT uuid, name FROM ttg.exercise_user WHERE login = $1 AND not_secure_pw = $2';
