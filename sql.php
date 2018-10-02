@@ -38,16 +38,17 @@ function createUser($conn, $login, $name, $password = NULL) {
 }
 
 function queryBids($conn, $user_uuid = NULL, $period = NULL) {
-	$query = 'SELECT p.name AS period, res.total AS number, b.number AS bid, b.bid_uuid AS bid_uuid FROM ttg.exercise_user eu INNER JOIN ttg.bid b ON eu.id = b.exercise_user_id RIGHT JOIN ttg.period p ON p.id = b.period_id LEFT JOIN (SELECT COUNT(ee.id) AS total, ee.bid_id AS bid FROM ttg.exercise ee GROUP BY ee.bid_id) res ON res.bid = b.id';
-	
 	$arr = array();
 	if (isset($user_uuid)) { 
-		$query = $query . ' WHERE eu.uuid = $1';
+		$query = $query . ' WHERE eu.id = $1) q2 ON q2.pid = p.id';
 		$arr[] = $user_uuid;
 		if (isset($period))	{
-			$query = $query . ' AND p.name = $2';
+			$query = $query . '  WHERE p.name = $2';
 			$arr[] = $period;
 		}
+	}
+	else {
+		$query = $query . ') q2 ON q2.pid = p.id';
 	}
 	
 	$query = $query . ' ORDER BY p.id ASC';
