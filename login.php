@@ -8,7 +8,7 @@ if (isset($_POST['login']) && isset($_POST['password'])) //when form submitted
   echo "pre-connect";    
   connect();
   echo "after-connect";    
-  if (validateUserPassword($_POST['login'], $_POST['password']))
+  if (validateUserPassword($_POST['login'], $_POST['password']) == TRUE)
   {
     $_SESSION['login'] = $_POST['login']; //write login to server storage
     echo "<script>alert('Correct login or password');</script>";    
