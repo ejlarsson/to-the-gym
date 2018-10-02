@@ -15,6 +15,7 @@ if (session_id() == '' || !isset($_SESSION['login'])) { //if sid exists and logi
 } else {
 
   echo "Hi, " . $_SESSION['login'];
+  echo "Hi, " . $_SESSION['name'];
   echo "Hi, " . $_SESSION['uuid'];
 ?>
 
