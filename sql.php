@@ -87,13 +87,44 @@ function queryExercises($conn, $user_uuid = NULL, $period = NULL, $exercise_uuid
 	
 	$query = $query . " ORDER BY e.exercise_date ASC;";	
 	return pg_query_params($conn, $query, $arr);
-		
 }
 
-/*function retrieveExerciseForPeriod($period) {
+function createExercise($conn, $user_uuid, $date, $duration, $type) {
+	$arr = array();
+	$arr["exercise_date"] = $date
+	if(isset($duration)) $arr["exercise_duration_minutes"] = $duration;
+	if(isset($type)) $arr["exercise_type_id"] = $type;
+	$arr["bid_id"] = retrieveCurrentBidId($conn, $user_uuid);
+	
+	$res = pg_insert($conn, 'ttg.exercise', $arr);
+	
+	if ($res) {
+		echo "POST data is successfully logged\n";
+		return TRUE;
+	} else {
+		echo "User must have sent wrong inputs\n";
+		return FALSE;
+	}
+}
+
+function retrieveCurrentBidId($conn, $user_uuid) {
+	$query = 'SELECT b.id AS id FROM ttg.bid b INNER JOIN ttg.period p ON p.id = b.period_id INNER JOIN ttg.exercise_user eu ON eu.id = b.exercise_user_id WHERE eu.uuid = $1 AND p.status = $2 LIMIT 1;';
+	$arr = array($user_uuid, 'Current');
+	$res = pg_query_params($conn, $query, $arr);
+	if (!$res) {
+		echo "An error occurred.\n";
+		exit;
+	}
+	$row = pg_fetch_row($res); 
+	return $row[0];
+}
+
+/*
+function retrieveExerciseForPeriod($period) {
 	$res = pg_query('SELECT * FROM '$exercise);//' e INNER JOIN '$exercise_type' et ON et.id = e.exercise_type_id INNER JOIN 
 	return $res;
-}*/
+}
+*/
 
 
 ?>
