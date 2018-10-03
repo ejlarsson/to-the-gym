@@ -94,8 +94,11 @@ function createExercise($conn, $user_uuid, $date, $duration = NULL, $type = NULL
 	$arr["exercise_date"] = $date;
 	if(isset($duration)) $arr["exercise_duration_minutes"] = $duration;
 	if(isset($type)) $arr["exercise_type_id"] = $type;
-	$arr["bid_id"] = retrieveCurrentBidId($conn, $user_uuid);
+	$bid_id = retrieveCurrentBidId($conn, $user_uuid);
+	if(isset($bid_id)) $arr["bid_id"] = $bid_id; else return FALSE;
 	
+	echo '<pre>'; print_r($arr); echo '</pre>';
+
 	$res = pg_insert($conn, 'ttg.exercise', $arr);
 	
 	if ($res) {
@@ -115,9 +118,7 @@ function retrieveCurrentBidId($conn, $user_uuid) {
 		echo "An error occurred.\n";
 		exit;
 	}
-	$row = pg_fetch_row($res); 
-	echo '<pre>'; print_r($row); echo '</pre>';
-	exit;
+	$row = pg_fetch_row($res);
 	return $row[0];
 }
 

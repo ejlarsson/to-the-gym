@@ -68,8 +68,9 @@ INSERT INTO exercise_user (id, login, name) VALUES (1, 'test', 'test');
 INSERT INTO exercise_user (id, login, not_secure_pw, name) VALUES (2, 'admin', 'admin', 'admin');
 
 INSERT INTO bid (id, exercise_user_id, period_id, number) VALUES (1, 1, 1, 3);
-INSERT INTO bid (id, exercise_user_id, period_id, number) VALUES (2, 2, 1, 4);
+INSERT INTO bid (id, exercise_user_id, period_id, number) VALUES (2, 1, 2, 5);
+INSERT INTO bid (id, exercise_user_id, period_id, number) VALUES (3, 2, 1, 4);
 
 INSERT INTO exercise (id, bid_id, exercise_duration_minutes) VALUES (1, 1, 30);
 INSERT INTO exercise (id, bid_id, exercise_duration_minutes) VALUES (2, 1, 35);
-INSERT INTO exercise (id, bid_id, exercise_duration_minutes) VALUES (3, 2, 20);
+INSERT INTO exercise (id, bid_id, exercise_duration_minutes) VALUES (3, 3, 20);
