@@ -61,22 +61,25 @@ function queryBids($conn, $user_uuid = NULL, $period = NULL) {
 
 function queryExercises($conn, $user_uuid = NULL, $period = NULL, $exercise_uuid = NULL) {
 	$query = 'SELECT eu.name AS user_name, eu.uuid AS user_uuid, p.name AS period, et.value AS exercise_type, e.exercise_duration_minutes AS exercise_duration, e.exercise_date AS exercise_date FROM ttg.exercise e INNER JOIN ttg.bid b ON b.id = e.bid_id INNER JOIN ttg.exercise_user eu ON eu.id = b.exercise_user_id INNER JOIN ttg.period p ON p.id = b.period_id LEFT JOIN ttg.exercise_type et ON et.id = e.exercise_type_id';
-	$arr = array(NULL, NULL, NULL);
+	$arr = array();
 	
 	if (isset($user_uuid) OR isset($period) OR isset($exercise_uuid)) {
 		$query = $query . " WHERE ";
-		
+		$count = 1;
 		if(isset($user_uuid)) {
-			$query = $query . "eu.uuid = $1";
-			$arr[0] = $user_uuid;
+			$query = $query . "eu.uuid = $".$count;
+			$arr[] = $user_uuid;
+			$count++;
 		}
 		if(isset($period)) {
-			$query = $query . "p.name = $2";
-			$arr[1] = $period;
+			$query = $query . "p.name = $".$count;
+			$arr[] = $period;
+			$count++;
 		}
 		if(isset($exercise_uuid)) {
-			$query = $query . "e.uuid = $3";
-			$arr[2] = $exercise_uuid;
+			$query = $query . "e.uuid = $".$count;
+			$arr[] = $exercise_uuid;
+			$count++;
 		}
 	}
 	
