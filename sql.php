@@ -96,9 +96,6 @@ function createExercise($conn, $user_uuid, $date, $duration, $type) {
 	if(isset($type)) $arr["exercise_type_id"] = $type;
 	$arr["bid_id"] = retrieveCurrentBidId($conn, $user_uuid);
 	
-	echo '<pre>'; print_r($arr); echo '</pre>';
-	exit;
-	
 	$res = pg_insert($conn, 'ttg.exercise', $arr);
 	
 	if ($res) {
@@ -119,6 +116,8 @@ function retrieveCurrentBidId($conn, $user_uuid) {
 		exit;
 	}
 	$row = pg_fetch_row($res); 
+	echo '<pre>'; print_r($row); echo '</pre>';
+	exit;
 	return $row[0];
 }
 
