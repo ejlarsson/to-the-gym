@@ -50,7 +50,7 @@ CREATE TABLE exercise (
  bid_id integer NOT NULL,
  exercise_type_id integer,
  exercise_duration_minutes smallint,
- exercise_date DATE,
+ exercise_date DATE NOT NULL DEFAULT now(),
  created_on TIMESTAMPTZ NOT NULL DEFAULT now(),
  CONSTRAINT exercise_bid_fkey FOREIGN KEY (bid_id)
 	REFERENCES bid (id) MATCH SIMPLE
