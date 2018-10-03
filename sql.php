@@ -89,7 +89,7 @@ function queryExercises($conn, $user_uuid = NULL, $period = NULL, $exercise_uuid
 	return pg_query_params($conn, $query, $arr);
 }
 
-function createExercise($conn, $user_uuid, $date, $duration, $type) {
+function createExercise($conn, $user_uuid, $date, $duration = NULL, $type = NULL) {
 	$arr = array();
 	$arr["exercise_date"] = $date;
 	if(isset($duration)) $arr["exercise_duration_minutes"] = $duration;
