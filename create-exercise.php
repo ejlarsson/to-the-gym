@@ -13,6 +13,8 @@ if (session_id() == '' || !isset($_SESSION['user_uuid'])) {
 		
 		include_once 'sql.php';
 		
+		echo $date . " | " . $duration . " | " . $type . " | " . $user_uuid;
+		
 		if(createExercise(getConnection(), $user_uuid, $date, $duration, $type)) {
 			echo "<noscript>Trening er registrert</noscript>";
 		} else {
