@@ -91,7 +91,7 @@ function queryExercises($conn, $user_uuid = NULL, $period = NULL, $exercise_uuid
 
 function createExercise($conn, $user_uuid, $date, $duration, $type) {
 	$arr = array();
-	$arr["exercise_date"] = $date
+	$arr["exercise_date"] = $date;
 	if(isset($duration)) $arr["exercise_duration_minutes"] = $duration;
 	if(isset($type)) $arr["exercise_type_id"] = $type;
 	$arr["bid_id"] = retrieveCurrentBidId($conn, $user_uuid);
