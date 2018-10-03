@@ -65,15 +65,15 @@ function queryExercises($conn, $user_uuid = NULL, $period = NULL, $exercise_uuid
 		$query = $query . " WHERE ";
 		$arr = array(NULL, NULL, NULL);
 		if(isset($user_uuid)) {
-			$query = $query . "eu.uuid = $1");
+			$query = $query . "eu.uuid = $1";
 			$arr[0] = $user_uuid;
 		}
 		if(isset($period)) {
-			$query = $query . "p.name = $2");
+			$query = $query . "p.name = $2";
 			$arr[1] = $period;
 		}
 		if(isset($exercise_uuid)) {
-			$query = $query . "e.uuid = $3");
+			$query = $query . "e.uuid = $3";
 			$arr[2] = $exercise_uuid;
 		}
 		
