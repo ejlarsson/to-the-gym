@@ -12,8 +12,15 @@ if (session_id() == '' || !isset($_SESSION['user_uuid'])) {
 	if(isset($_GET['user'])) $user_uuid = $_GET['user']; else $user_uuid = NULL;
 	if(isset($_GET['exercise'])) $exercise_uuid = $_GET['exercise']; else $exercise_uuid = NULL;
 	
+	
+	echo $user_uuid . " | " . $period . " | " . $exercise_uuid . "<br>";
+	
 	$res = queryExercises(getConnection(), $user_uuid, $period, $exercise_uuid);
 	
+	if (!$res) {
+		echo "An error occurred.\n";
+		exit;
+	}
 ?>
 
    <table>
@@ -30,6 +37,9 @@ if (session_id() == '' || !isset($_SESSION['user_uuid'])) {
        <td><? echo $row['user_name']; ?></td>
 	   <td><? echo $row['user_uuid']; ?></td>
 	   <td><? echo $row['period']; ?></td>
+	   <td><? echo $row['exercise_type']; ?></td>
+	   <td><? echo $row['exercise_duration']; ?></td>
+	   <td><? echo $row['exercise_date']; ?></td>
     </tr>
      <? } ?>
    </table>
