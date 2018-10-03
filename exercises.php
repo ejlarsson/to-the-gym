@@ -30,9 +30,6 @@ if (session_id() == '' || !isset($_SESSION['user_uuid'])) {
        <td><? echo $row['user_name']; ?></td>
 	   <td><? echo $row['user_uuid']; ?></td>
 	   <td><? echo $row['period']; ?></td>
-	   <td><? echo $row['exercise_type']; ?></td>
-	   <td><? echo $row['exercise_duration']; ?></td>
-	   <td><? echo $row['exercise_date']; ?></td>
     </tr>
      <? } ?>
    </table>
