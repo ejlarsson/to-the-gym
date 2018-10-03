@@ -109,7 +109,7 @@ function createExercise($conn, $user_uuid, $date, $duration, $type) {
 
 function retrieveCurrentBidId($conn, $user_uuid) {
 	$query = 'SELECT b.id AS id FROM ttg.bid b INNER JOIN ttg.period p ON p.id = b.period_id INNER JOIN ttg.exercise_user eu ON eu.id = b.exercise_user_id WHERE eu.uuid = $1 AND p.status = $2 LIMIT 1;';
-	$arr = array($user_uuid, 'Current');
+	$arr = array($user_uuid, 'CURRENT');
 	$res = pg_query_params($conn, $query, $arr);
 	if (!$res) {
 		echo "An error occurred.\n";

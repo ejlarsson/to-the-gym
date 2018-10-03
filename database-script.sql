@@ -3,12 +3,16 @@ DROP TABLE IF EXISTS bid;
 DROP TABLE IF EXISTS exercise_user;
 DROP TABLE IF EXISTS period;
 DROP TABLE IF EXISTS exercise_type;
+DROP TYPE IF EXISTS period_status_enum;
 
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 
+CREATE TYPE period_status_enum AS ENUM ('PAST', 'CURRENT', 'FUTURE');
+
 CREATE TABLE period (
  id serial PRIMARY KEY,
- name VARCHAR (50) UNIQUE NOT NULL
+ name VARCHAR (50) UNIQUE NOT NULL,
+ status period_status_enum NOT NULL
 );
  
 CREATE TABLE exercise_type (
@@ -56,9 +60,9 @@ CREATE TABLE exercise (
 	ON UPDATE NO ACTION ON DELETE NO ACTION
  );
 
-INSERT INTO period (id, name) VALUES (1, 'Oct-18');
-INSERT INTO period (id, name) VALUES (2, 'Nov-18');
-INSERT INTO period (id, name) VALUES (3, 'Dec-18');
+INSERT INTO period (id, name, status) VALUES (1, 'Oct-18', 'PAST');
+INSERT INTO period (id, name, status) VALUES (2, 'Nov-18', 'CURRENT');
+INSERT INTO period (id, name, status) VALUES (3, 'Dec-18', 'FUTURE');
 
 INSERT INTO exercise_user (id, login, name) VALUES (1, 'test', 'test');
 INSERT INTO exercise_user (id, login, not_secure_pw, name) VALUES (2, 'admin', 'admin', 'admin');
