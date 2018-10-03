@@ -12,7 +12,6 @@ if (session_id() == '' || !isset($_SESSION['user_uuid'])) {
 	if(isset($_GET['user'])) $user_uuid = $_GET['user']; else $user_uuid = NULL;
 	if(isset($_GET['exercise'])) $exercise_uuid = $_GET['exercise']; else $exercise_uuid = NULL;
 	
-	
 	echo $user_uuid . " | " . $period . " | " . $exercise_uuid . "<br>";
 	
 	$res = queryExercises(getConnection(), $user_uuid, $period, $exercise_uuid);

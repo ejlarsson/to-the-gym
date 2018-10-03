@@ -76,11 +76,10 @@ function queryExercises($conn, $user_uuid = NULL, $period = NULL, $exercise_uuid
 			$query = $query . "e.uuid = $3";
 			$arr[2] = $exercise_uuid;
 		}
-		
-		$query = $query . " ORDER BY e.exercise_date ASC;";
-		
-		return pg_query_params($conn, $query, $arr);
 	}
+	
+	$query = $query . " ORDER BY e.exercise_date ASC;";	
+	return pg_query_params($conn, $query, $arr);
 		
 }
 
