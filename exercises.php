@@ -1,5 +1,5 @@
 <?php
-session_start(); //gets session id from cookies, or prepa
+include_once 'session.php';
 
 if (session_id() == '' || !isset($_SESSION['user_uuid'])) {
 	header('Location: /'); //redirect to main
@@ -8,11 +8,10 @@ if (session_id() == '' || !isset($_SESSION['user_uuid'])) {
 	
 	/* Expected link parameters: period, exercise, user */
 	
-	if(isset($_GET['period'])) $period = $_GET['period']; else $period = NULL;
-	if(isset($_GET['user'])) $user_uuid = $_GET['user']; else $user_uuid = NULL;
-	if(isset($_GET['exercise'])) $exercise_uuid = $_GET['exercise']; else $exercise_uuid = NULL;
-	
-	echo $user_uuid . " | " . $period . " | " . $exercise_uuid . "<br>";
+	if(isset($_POST['all_users'])) $user_uuid = NULL;
+	if(isset($_POST['all_periods'])) $periods = NULL; else $periods = 'CURRENT';
+//	if(isset($_GET['exercise'])) $exercise_uuid = $_GET['exercise']; else $exercise_uuid = NULL;
+	$exercise_uuid = NULL;
 	
 	$res = queryExercises(getConnection(), $user_uuid, $period, $exercise_uuid);
 	
@@ -21,10 +20,7 @@ if (session_id() == '' || !isset($_SESSION['user_uuid'])) {
 		exit;
 	}
 }
-
 ?>
-
-
 <html>
 	<head>
 		<title>Let's go to the gym</title>
@@ -60,99 +56,99 @@ if (session_id() == '' || !isset($_SESSION['user_uuid'])) {
 				</header>
 
 				<section>
-					<form method="post" action="/exercises.php">
+					<form method="post">
 						<div class="row gtr-uniform">
 							<div class="col-6 col-12-small">
-								<input type="checkbox" id="current_user" name="current_user">
-									<label for="current_user">Show my exercises</label>
-								</div>
-								<div class="col-6 col-12-small">
-									<input type="checkbox" id="current_period" name="current_period" checked>
-										<label for="current_period">Show current period</label>
-									</div>
-
-									<div class="col-12">
-										<ul class="actions">
-											<li>
-												<input type="submit" value="Filter" class="primary" />
-											</li>
-										</ul>
-									</div>
-								</div>
-							</form>
-						</section>
-
-						<section>
-							<h4>Exercises</h4>
-
-							<h5>Alternate</h5>
-							<div class="table-wrapper">
-								<table class="alt">
-									<thead>
-										<tr>
-											<th>User</th>
-											<th>Period</th>
-											<th>Type</th>
-											<th>Duration</th>
-											<th>Date</th>
-										</tr>
-									</thead>
-									<tbody>
-										<? while ($row = pg_fetch_assoc($res)) { ?>
-										<tr>
-											<td>
-												<? echo $row['user_uuid']; ?>
-											</td>
-											<td>
-												<? echo $row['period']; ?>
-											</td>
-											<td>
-												<? echo $row['exercise_type']; ?>
-											</td>
-											<td>
-												<? echo $row['exercise_duration']; ?>
-											</td>
-											<td>
-												<? echo $row['exercise_date']; ?>
-											</td>
-										</tr>
-										<? } ?>
-
-									</tbody>
-									<tfoot>
-										<tr>
-											<td colspan="3"/>
-											<td>Sum</td>
-											<td/>
-										</tr>
-									</tfoot>
-								</table>
+								<input type="checkbox" id="all_users" name="all_users" />
+								<label for="all_users">Show my exercises</label>
 							</div>
-						</section>
-					</div>
+							<div class="col-6 col-12-small">
+								<input type="checkbox" id="all_periods" name="all_periods" />
+								<label for="all_periods">Show all periods</label>
+							</div>
+
+							<div class="col-12">
+								<ul class="actions">
+									<li>
+										<input type="submit" value="Filter" class="primary" />
+									</li>
+								</ul>
+							</div>
+						</div>
+					</form>
 				</section>
 
-				<!-- Footer -->
-				<footer id="footer">
-					<ul class="icons">
-						<!--
+				<section>
+					<h4>Exercises</h4>
+
+					<h5>Alternate</h5>
+					<div class="table-wrapper">
+						<table class="alt">
+							<thead>
+								<tr>
+									<th>User</th>
+									<th>Period</th>
+									<th>Type</th>
+									<th>Duration</th>
+									<th>Date</th>
+								</tr>
+							</thead>
+							<tbody>
+								<? while ($row = pg_fetch_assoc($res)) { ?>
+								<tr>
+									<td>
+										<? echo $row['user_uuid']; ?>
+									</td>
+									<td>
+										<? echo $row['period']; ?>
+									</td>
+									<td>
+										<? echo $row['exercise_type']; ?>
+									</td>
+									<td>
+										<? echo $row['exercise_duration']; ?>
+									</td>
+									<td>
+										<? echo $row['exercise_date']; ?>
+									</td>
+								</tr>
+								<? } ?>
+
+							</tbody>
+							<tfoot>
+								<tr>
+									<td colspan="3"/>
+									<td>Sum</td>
+									<td/>
+								</tr>
+							</tfoot>
+						</table>
+					</div>
+				</section>
+			</div>
+		</section>
+
+		<!-- Footer -->
+		<footer id="footer">
+			<ul class="icons">
+				<!--
 					<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
 					<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
 					<li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
 -->
-					</ul>
-					<!--
+			</ul>
+			<!--
 				<p class="copyright">&copy; Untitled. Credits: <a href="http://html5up.net">HTML5 UP</a></p>
 -->
-				</footer>
+		</footer>
 
-				<!-- Scripts -->
-				<script src="assets/js/jquery.min.js"/>
-				<script src="assets/js/jquery.scrolly.min.js"/>
-				<script src="assets/js/browser.min.js"/>
-				<script src="assets/js/breakpoints.min.js"/>
-				<script src="assets/js/util.js"/>
-				<script src="assets/js/main.js"/>
+		<!-- Scripts -->
+		<script src="assets/js/jquery.min.js"/>
+		<script src="assets/js/jquery.scrolly.min.js"/>
+		<script src="assets/js/browser.min.js"/>
+		<script src="assets/js/breakpoints.min.js"/>
+		<script src="assets/js/util.js"/>
+		<script src="assets/js/main.js"/>
 
-			</body>
-		</html>
+	</body>
+</html>

@@ -73,7 +73,13 @@ function queryExercises($conn, $user_uuid = NULL, $period = NULL, $exercise_uuid
 		}
 		if(isset($period)) {
 			if ($count > 1) $query = $query . " AND ";
-			$query = $query . "p.name = $".$count;
+			
+			if($period === 'CURRENT') {
+				$query = $query . "p.status = $".$count;
+			} else {
+				$query = $query . "p.name = $".$count;
+			}
+			
 			$arr[] = $period;
 			$count++;
 		}
