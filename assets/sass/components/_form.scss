@@ -21,6 +21,7 @@
 	input[type="password"],
 	input[type="email"],
 	input[type="number"],
+	input[type="date"],
 	select,
 	textarea {
 		@include vendor('appearance', 'none');
@@ -69,6 +70,7 @@
 	input[type="password"],
 	input[type="email"],
 	input[type="number"],
+	input[type="date"],
 	select {
 		height: _size(element-height);
 	}
@@ -166,6 +168,7 @@
 		input[type="password"],
 		input[type="email"],
 		input[type="number"],
+		input[type="date"],
 		select,
 		textarea {
 			color: inherit;
