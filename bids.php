@@ -121,12 +121,12 @@ if (session_id() == '' || !isset($_SESSION['user_uuid'])) {
 					<form method="post" action="/create-bid.php">
 						<div class="row gtr-uniform">
 							<div class="col-12 col-12-xsmall">
-								<input type="number" name="bid" id="bid" value="" placeholder="Bid for current period" min="1" max="99" <? if ($current_bid_exist || !current_period_exist) echo "disabled"; ?> />
+								<input type="number" name="bid" id="bid" value="" placeholder="Bid for current period" min="1" max="99" <? if ($current_bid_exist || !$current_period_exist) echo "disabled"; ?> />
 							</div>
 							<div class="col-12">
 								<ul class="actions">
 									<li>
-										<input type="submit" value="Register bid" class="primary" <? if ($current_bid_exist || !current_period_exist) echo "disabled"; ?> />
+										<input type="submit" value="Register bid" class="primary" <? if ($current_bid_exist || !$current_period_exist) echo "disabled"; ?> />
 									</li>
 								</ul>
 							</div>
