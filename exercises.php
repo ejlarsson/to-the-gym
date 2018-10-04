@@ -8,7 +8,7 @@ if (session_id() == '' || !isset($_SESSION['user_uuid'])) {
 	
 	/* Expected link parameters: period, exercise, user */
 	
-	if(isset($_POST['all_users'])) $req_user = NULL;
+	if(isset($_POST['all_users'])) $req_user = NULL; else $req_user = $_SESSION['user_uuid'];
 	if(isset($_POST['all_periods'])) $req_period = NULL; else $req_period = 'CURRENT';
 //	if(isset($_GET['exercise'])) $exercise_uuid = $_GET['exercise']; else $exercise_uuid = NULL;
 	$exercise_uuid = NULL;
