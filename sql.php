@@ -164,12 +164,16 @@ function queryPeriods($conn, $period_status = NULL) {
 	return pg_query_params($conn, $query, $arr);
 }
 
-function queryUsers($conn, $user_uuid = NULL) {
+function queryUsers($conn, $user_uuid = NULL, $login = NULL) {
 	$query = 'SELECT u.id AS uid, u.uuid AS user_uuid, u.name AS user_name FROM exercise_user u';
 	$arr = array();
 	if (isset($user_uuid)) {
 		$arr[] = $user_uuid;
 		$query = $query . ' WHERE u.name = $1';
+	}
+	else if (isset($login)) {
+		$arr[] = $login;
+		$query = $query . ' WHERE u.login = $1';
 	}
 	$query = $query . ' ORDER BY u.id ASC';
 	
