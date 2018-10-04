@@ -26,22 +26,22 @@ include_once('session.php');
 					<? if(isset($user_uuid)) { ?>
 					<p>Welcome <? echo $user_name; ?>!</p>
 					<ul class="actions">
-						<li><a href="#four" class="button primary">Log exercise</a></li>
+						<li><a href="#create_exercise" class="button primary">Log exercise</a></li>
 						<li><a href="/exercises.php" class="button default">See exercises</a></li>
 						<li><a href="/bids.php" class="button default">See bids</a></li>
 					</ul>
 					<? } else { ?>
 					<ul class="actions">
-						<li><a href="/login.php" class="button primary">Login</a></li>
-						<li><a href="/create-user.php" class="button default">Create user</a></li>
+						<li><a href="#login" class="button primary">Login</a></li>
+						<li><a href="#create-user" class="button default">Create user</a></li>
 					</ul>
 					<? } ?>
 				</div>
 			</header>
 
 		<!-- Four -->
-
-			<section id="four" class="wrapper">
+<?php if (isset($user_uuid)) { ?>
+			<section id="create_exercise" class="wrapper">
 				<div class="inner">
 
 					<header class="major">
@@ -49,7 +49,7 @@ include_once('session.php');
 					</header>
 
 					<section>
-						<h4>Form</h4>
+						<h4>N.B. Nothing is mandatory</h4>
 						<form method="post" action="/create-exercise.php">
 							<div class="row gtr-uniform">
 								<div class="col-6 col-12-xsmall">
@@ -79,7 +79,68 @@ include_once('session.php');
 					</section>
 				</div>
 			</section>
+<? } else { ?>
 
+			<section id="login" class="wrapper">
+				<div class="inner">
+
+					<header class="major">
+						<h2>Login</h2>
+					</header>
+
+					<section>
+						<form method="post" action="/login.php">
+							<div class="row gtr-uniform">
+								<div class="col-6 col-12-xsmall">
+									<input type="text" name="login" id="login" value="" placeholder="Login" />
+								</div>
+								<div class="col-6 col-12-xsmall">
+									<input type="password" name="password" id="password" value="" placeholder="Password" />
+								</div>
+								<div class="col-12">
+									<ul class="actions">
+										<li><input type="submit" value="Login" class="primary" /></li>
+									</ul>
+								</div>
+							</div>
+						</form>
+					</section>
+				</div>
+			</section>
+
+			<section id="create-user" class="wrapper">
+				<div class="inner">
+
+					<header class="major">
+						<h2>Create user</h2>
+					</header>
+
+					<section>
+						<h4>
+							Bruk ikke et passord du vanligvis bruker da jeg ikke giddet at gjøre dette sikkert med kryptering. Happy hacking...<br>
+							Kan nevnes at jeg ikke giddet skape noen valideringersfeil etc. så får du feil så er det noe som er feil med det du skrev inn :D
+						</h4>
+						<form method="post" action="/create-user.php">
+							<div class="row gtr-uniform">
+								<div class="col-6 col-12-xsmall">
+									<input type="text" name="login" id="login" value="" placeholder="Login" />
+								</div>
+								<div class="col-6 col-12-xsmall">
+									<input type="password" name="password" id="password" value="" placeholder="Password" />
+								</div>
+								<div class="col-6 col-12-xsmall">
+									<input type="text" name="name" id="name" value="" placeholder="Name" />
+								</div>
+								<div class="col-12">
+									<ul class="actions">
+										<li><input type="submit" value="Login" class="primary" /></li>
+									</ul>
+								</div>
+							</div>
+						</form>
+					</section>
+				</div>
+			</section>
 
 		<!-- Footer -->
 			<footer id="footer">
