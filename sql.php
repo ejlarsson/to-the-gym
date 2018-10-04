@@ -168,8 +168,6 @@ function queryUsers($conn, $user_uuid = NULL, $login = NULL) {
 	}
 	$query = $query . ' ORDER BY u.id ASC';
 	
-	echo isset($user_uuid) . ' = ' . $user_uuid . ' | ' . isset($login) . ' = ' . $login . ' | ' . $query . '<br>';
-	
 	return pg_query_params($conn, $query, $arr);
 }
 ?>
