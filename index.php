@@ -112,10 +112,10 @@ include_once('session.php');
 					<form method="post" action="/login.php">
 						<div class="row gtr-uniform">
 							<div class="col-6 col-12-xsmall">
-								<input type="text" name="login" id="login" value="" placeholder="Login" />
+								<input type="text" name="login" id="login" placeholder="Login" />
 							</div>
 							<div class="col-6 col-12-xsmall">
-								<input type="password" name="password" id="password" value="" placeholder="Password" />
+								<input type="password" name="password" id="password" placeholder="Password" />
 							</div>
 							<div class="col-12">
 								<ul class="actions">
@@ -145,13 +145,13 @@ include_once('session.php');
 						<form method="post" action="/create-user.php">
 							<div class="row gtr-uniform">
 								<div class="col-4 col-12-xsmall">
-									<input type="text" name="login" id="login" value="" placeholder="Login" maxlength="50" />
+									<input type="text" name="login" id="login" placeholder="Login" maxlength="50" />
 								</div>
 								<div class="col-4 col-12-xsmall">
-									<input type="password" name="password" id="password" value="" placeholder="Password" />
+									<input type="password" name="password" id="password" placeholder="Password" />
 								</div>
 								<div class="col-4 col-12-xsmall">
-									<input type="text" name="name" id="name" value="" placeholder="Name" maxlength="255" />
+									<input type="text" name="name" id="name" placeholder="Name" maxlength="255" />
 								</div>
 								<div class="col-12">
 									<ul class="actions">
