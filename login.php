@@ -1,9 +1,7 @@
 <?php
-
 session_start();
 
 if (isset($_POST['login'])) {
-	
 	include_once 'sql.php';
 	
 	if (isset($_POST['password']) && $_POST['password'] != '') { 
@@ -11,24 +9,17 @@ if (isset($_POST['login'])) {
 	} else { 
 		$res = validateUserPassword(getConnection(), $_POST['login'], NULL);
 	}
-	
+	echo '<pre>'; print_r($res); echo '</pre>';
 	if ($res) {
-		
-		$_SESSION['login'] = $_POST['login'];
 		$_SESSION['user_uuid'] = pg_fetch_result($res, 0, 0);
 		$_SESSION['user_name'] = pg_fetch_result($res, 0, 1);
-				
+		
 		header('Location: /'); //redirect to main
 	} else {
+		header('Location: /'); //redirect to main
 		echo "<script>alert('Wrong login or password');</script>";
 		echo "<noscript>Wrong login or password</noscript>";
 	}
 }
 
 ?>
-
-<form method="post">
-	Login:<br><input name="login"><br>
-	Password:<br><input name="password"><br>
-	<input type="submit">
-</form>
