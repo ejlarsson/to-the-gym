@@ -4126,3 +4126,10 @@ input, select, textarea {
 		}
 
 	}
+	
+/** ADDED BY ME **/
+
+tr.is_current_user {
+    background-color: #f4e6fb !important;
+    color: #b959e2 !important;
+}

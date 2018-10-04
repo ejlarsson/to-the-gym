@@ -37,13 +37,12 @@ if (session_id() == '' || !isset($_SESSION['user_uuid'])) {
 		<header id="header">
 			<div class="content">
 				<h1><a href="#">Let's go to the gym</a></h1>
-				<p>Lorem ipsum!</p>
 				<ul class="actions">
 					<li>
-						<a href="/index.php#create_exercise" class="button primary">Log exercise</a>
+						<a href="/index.php" class="button primary">Home</a>
 					</li>
 					<li>
-						<a href="/index.php" class="button default">Home</a>
+						<a href="/index.php#create_exercise" class="button default">Log exercise</a>
 					</li>
 				</ul>
 			</div>
@@ -62,7 +61,7 @@ if (session_id() == '' || !isset($_SESSION['user_uuid'])) {
 						<div class="row gtr-uniform">
 							<div class="col-6 col-12-small">
 								<input type="checkbox" id="all_users" name="all_users">
-								<label for="all_users">Show my exercises</label>
+								<label for="all_users">Show all exercises</label>
 							</div>
 							<div class="col-6 col-12-small">
 								<input type="checkbox" id="all_periods" name="all_periods">
@@ -97,9 +96,12 @@ if (session_id() == '' || !isset($_SESSION['user_uuid'])) {
 							</thead>
 							<tbody>
 								<? while ($row = pg_fetch_assoc($res)) { ?>
-								<tr>
+								
+								<? 	if($row['user_uuid'] === $user_uuid) echo '<tr class="is_current_user">'; 
+									else echo '<tr>';
+								?>
 									<td>
-										<? echo $row['user_uuid']; ?>
+										<? echo $row['user_name']; ?>
 									</td>
 									<td>
 										<? echo $row['period']; ?>
@@ -117,13 +119,7 @@ if (session_id() == '' || !isset($_SESSION['user_uuid'])) {
 								<? } ?>
 
 							</tbody>
-							<tfoot>
-								<tr>
-									<td colspan="3"/>
-									<td>Sum</td>
-									<td/>
-								</tr>
-							</tfoot>
+							
 						</table>
 					</div>
 				</section>
@@ -132,16 +128,6 @@ if (session_id() == '' || !isset($_SESSION['user_uuid'])) {
 
 		<!-- Footer -->
 		<footer id="footer">
-			<ul class="icons">
-				<!--
-					<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
-					<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
-					<li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
--->
-			</ul>
-			<!--
-				<p class="copyright">&copy; Untitled. Credits: <a href="http://html5up.net">HTML5 UP</a></p>
--->
 		</footer>
 
 		<!-- Scripts -->

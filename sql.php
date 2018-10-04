@@ -39,7 +39,7 @@ function createUser($conn, $login, $name, $password = NULL) {
 
 function queryBids($conn, $user_uuid = NULL, $period = NULL) {
 	
-	$query = 'SELECT p.name AS period, q2.bid AS bid, q2.total AS total FROM ttg.period p LEFT JOIN (SELECT b.period_id AS pid, b.number AS bid, q1.total AS total FROM ttg.bid b INNER JOIN ttg.exercise_user eu ON eu.id = b.exercise_user_id LEFT JOIN (SELECT ee.bid_id AS bid, COUNT(ee.id) AS total FROM ttg.exercise ee GROUP BY ee.bid_id) q1 ON q1.bid = b.id';
+	$query = 'SELECT p.name AS period, q2.bid AS bid, q2.total AS total, q2.duration AS duration FROM ttg.period p LEFT JOIN (SELECT b.period_id AS pid, b.number AS bid, q1.total AS total, q1.duration AS duration FROM ttg.bid b INNER JOIN ttg.exercise_user eu ON eu.id = b.exercise_user_id LEFT JOIN (SELECT ee.bid_id AS bid, COALESCE(COUNT(ee.id),0) AS total, COALESCE(SUM(exercise_duration),0) AS duration FROM ttg.exercise ee GROUP BY ee.bid_id) q1 ON q1.bid = b.id';
 
 	$arr = array();
 	if (isset($user_uuid)) { 
@@ -60,7 +60,7 @@ function queryBids($conn, $user_uuid = NULL, $period = NULL) {
 }
 
 function queryExercises($conn, $user_uuid = NULL, $period = NULL, $exercise_uuid = NULL) {
-	$query = 'SELECT eu.name AS user_name, eu.uuid AS user_uuid, p.name AS period, et.value AS exercise_type, e.exercise_duration_minutes AS exercise_duration, e.exercise_date AS exercise_date FROM ttg.exercise e INNER JOIN ttg.bid b ON b.id = e.bid_id INNER JOIN ttg.exercise_user eu ON eu.id = b.exercise_user_id INNER JOIN ttg.period p ON p.id = b.period_id LEFT JOIN ttg.exercise_type et ON et.id = e.exercise_type_id';
+	$query = 'SELECT eu.name AS user_name, eu.uuid AS user_uuid, p.name AS period, et.value AS exercise_type, e.exercise_duration_minutes AS exercise_duration, e.exercise_date AS exercise_date, b.uuid AS bid_uuid FROM ttg.exercise e INNER JOIN ttg.bid b ON b.id = e.bid_id INNER JOIN ttg.exercise_user eu ON eu.id = b.exercise_user_id INNER JOIN ttg.period p ON p.id = b.period_id LEFT JOIN ttg.exercise_type et ON et.id = e.exercise_type_id';
 	$arr = array();
 	
 	if (isset($user_uuid) OR isset($period) OR isset($exercise_uuid)) {
