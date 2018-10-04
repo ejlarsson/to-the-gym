@@ -11,6 +11,9 @@ if (isset($_POST['login']) && isset($_POST['name'])) {
 		
 		$_SESSION['user_uuid'] = $user[1];
 		$_SESSION['user_name'] = $user[2];
+		
+		echo $_POST['login'] . ' ø ' . $_POST['name'] . ' ø ' . $_POST['password'] . ' <br>';
+		
 		echo $_SESSION['user_uuid'] . ' æ ' . $_SESSION['user_name'];
 		exit;
 		header('Location: /');

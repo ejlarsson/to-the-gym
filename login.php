@@ -15,6 +15,9 @@ if (isset($_POST['login'])) {
 		
 		$_SESSION['user_uuid'] = $row[0];
 		$_SESSION['user_name'] = $row[1];
+		
+		echo $_POST['login'] . ' ø ' . $_POST['password'] . ' <br>';
+		
 		echo $_SESSION['user_uuid'] . ' æ ' . $_SESSION['user_name'];
 		exit;
 		
