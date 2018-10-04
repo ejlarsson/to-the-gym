@@ -69,13 +69,12 @@ if (session_id() == '' || !isset($_SESSION['user_uuid'])) {
 							<tbody>
 								<? 	
 									$current_period_exist = FALSE;
+									$current_bid_exist = FALSE;
 									
 									while ($row = pg_fetch_assoc($res)) { 
 								
-										if(isset($row['bid']) AND $row['period_status'] === 'CURRENT') $current_bid_exist = TRUE; else $current_bid_exist = FALSE;
+										if(isset($row['bid']) AND $row['period_status'] === 'CURRENT') $current_bid_exist = TRUE;
 										if($row['period_status'] === 'CURRENT') $current_period_exist = TRUE;
-										
-										echo '<br><CBE:' . $current_bid_exist . " | CPE:" . $current_period_exist . ' |B:' . isset($row['bid']) . ' |!CPE or CBE:' . (!$current_period_exist || $current_bid_exist);
 								?>
 								
 								<tr <? if($row['period_status'] === 'CURRENT') echo 'style="font-weight:bold"'; ?>>
@@ -112,7 +111,7 @@ if (session_id() == '' || !isset($_SESSION['user_uuid'])) {
 
 				<section>
 					
-				<? if(!$current_period_exist || $current_bid_exist) { ?>		
+				<? if (!$current_period_exist || $current_bid_exist) { ?>		
 					<h4>Can't create bid as there already is one or there is no current period.</h4>
 				<? } ?>
 			
