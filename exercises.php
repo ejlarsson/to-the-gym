@@ -61,11 +61,11 @@ if (session_id() == '' || !isset($_SESSION['user_uuid'])) {
 					<form method="post">
 						<div class="row gtr-uniform">
 							<div class="col-6 col-12-small">
-								<input type="checkbox" id="all_users" name="all_users" />
+								<input type="checkbox" id="all_users" name="all_users">
 								<label for="all_users">Show my exercises</label>
 							</div>
 							<div class="col-6 col-12-small">
-								<input type="checkbox" id="all_periods" name="all_periods" />
+								<input type="checkbox" id="all_periods" name="all_periods">
 								<label for="all_periods">Show all periods</label>
 							</div>
 
