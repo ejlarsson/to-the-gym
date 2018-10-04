@@ -72,10 +72,10 @@ if (session_id() == '' || !isset($_SESSION['user_uuid'])) {
 									
 									while ($row = pg_fetch_assoc($res)) { 
 								
-										if (isset($row['bid']) AND $row['period_status'] === 'CURRENT') $current_bid_exist = TRUE; else $current_bid_exist = FALSE;
+										if(isset($row['bid']) AND $row['period_status'] === 'CURRENT') $current_bid_exist = TRUE; else $current_bid_exist = FALSE;
 										if($row['period_status'] === 'CURRENT') $current_period_exist = TRUE;
 										
-										echo $current_bid_exist . " | " . $current_period_exist;
+										echo '<br>' . $current_bid_exist . " | " . $current_period_exist . ' ' . $row['period_status'] . ' ' . $row['bid'];
 								?>
 								
 								<tr <? if($row['period_status'] === 'CURRENT') echo 'style="font-weight:bold"'; ?>>
