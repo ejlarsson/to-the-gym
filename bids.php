@@ -67,10 +67,19 @@ if (session_id() == '' || !isset($_SESSION['user_uuid'])) {
 								</tr>
 							</thead>
 							<tbody>
-								<? while ($row = pg_fetch_assoc($res)) { ?>
+								<? 	
+									$current_period_exist = FALSE;
+									
+									while ($row = pg_fetch_assoc($res)) { 
+								
+										if (isset($row['bid']) AND $row['period_status'] === 'CURRENT') $current_bid_exist = TRUE; else $current_bid_exist = FALSE;
+										if($row['period_status'] === 'CURRENT') $current_period_exist = TRUE;
+								
+								?>
+								
 								<tr>
-									<td>
-										<? echo $row['period']; ?>
+									<td <? if($row['period_status'] === 'CURRENT') echo 'style="font-weight:bold"'; ?>>
+										<? echo $row['period_name']; ?>
 									</td>
 									<td>
 										<? if (!isset($row['bid'])) { echo '<a href="/create-bid.php?period='.$row['period'].'">Add</a>'; } else { echo $row['bid']; } ?>
@@ -92,7 +101,7 @@ if (session_id() == '' || !isset($_SESSION['user_uuid'])) {
 				</section>
 			</div>
 		</section>
-
+				
 		<section id="create_bid" class="wrapper">
 			<div class="inner">
 
@@ -101,15 +110,20 @@ if (session_id() == '' || !isset($_SESSION['user_uuid'])) {
 				</header>
 
 				<section>
+					
+				<? if(!$current_period_exist || $current_bid_exist) { ?>		
+					<h4>Can't create bid as there already is one or there is no current period.</h4>
+				<? } ?>
+			
 					<form method="post" action="/create-bid.php">
 						<div class="row gtr-uniform">
 							<div class="col-12 col-12-xsmall">
-								<input type="number" name="bid" id="bid" value="" placeholder="Bid for current period" min="1" max="99" />
+								<input type="number" name="bid" id="bid" value="" placeholder="Bid for current period" min="1" max="99" <? if ($current_bid_exist || !current_period_exist) echo "disabled"; ?> />
 							</div>
 							<div class="col-12">
 								<ul class="actions">
 									<li>
-										<input type="submit" value="Register bid" class="primary" />
+										<input type="submit" value="Register bid" class="primary" <? if ($current_bid_exist || !current_period_exist) echo "disabled"; ?> />
 									</li>
 								</ul>
 							</div>
