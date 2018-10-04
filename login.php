@@ -13,7 +13,7 @@ if (isset($_POST['login'])) {
 	if ($res) {
 		$row = pg_fetch_row($res);
 		$_SESSION['user_uuid'] = $row[0];
-		$_SESSION['user_name'] = row[1];
+		$_SESSION['user_name'] = $row[1];
 		
 		header('Location: /'); //redirect to main
 	} else {
