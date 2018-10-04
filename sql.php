@@ -168,7 +168,7 @@ function queryUsers($conn, $user_uuid = NULL, $login = NULL) {
 	}
 	elseif (isset($login)) {
 		$arr[] = $login;
-		$query = $query . ' WHERE u.login = $1';
+		$query = $query . " WHERE u.login = '$1'";
 	}
 	$query = $query . ' ORDER BY u.id ASC';
 	
