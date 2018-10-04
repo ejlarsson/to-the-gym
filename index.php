@@ -58,7 +58,7 @@ include_once('session.php');
 		<?php 
 		if(isset($user_uuid)) { 
 		
-		//$res = retrieveCurrentBidId(getConnection(), $user_uuid);
+		$res = retrieveCurrentBidId(getConnection(), $user_uuid);
 		//$no_current_bid = empty($res);
 		
 		?>
