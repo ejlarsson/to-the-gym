@@ -82,7 +82,10 @@ if (session_id() == '' || !isset($_SESSION['user_uuid'])) {
 										<? echo $row['period_name']; ?>
 									</td>
 									<td>
-										<? if (!isset($row['bid'])) { echo '<a href="/create-bid.php?period='.$row['period'].'">Add</a>'; } else { echo $row['bid']; } ?>
+										<? if (!isset($row['bid']) AND $row['period_status'] === 'CURRENT') { 
+											echo '<a href="#create_bid">Add</a>'; 
+										} 
+										else { echo $row['bid']; } ?>
 									</td>
 									<td>
 										<? 	if ($row['total'] === 0) { echo '<a href="/index.php#create_exercise">0</a>'; } 
@@ -112,7 +115,7 @@ if (session_id() == '' || !isset($_SESSION['user_uuid'])) {
 				<section>
 					
 				<? if (!$current_period_exist || $current_bid_exist) { ?>		
-					<h4>Can't create bid as there already is one or there is no current period.</h4>
+					<h4>Can't create bid as you already have a bid or there is no current period.</h4>
 				<? } ?>
 			
 					<form method="post" action="/create-bid.php">
