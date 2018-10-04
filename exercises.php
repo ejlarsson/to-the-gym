@@ -19,7 +19,6 @@ if (session_id() == '' || !isset($_SESSION['user_uuid'])) {
 		echo "An error occurred.\n";
 		exit;
 	}
-	print_r($res);
 }
 ?>
 <html>
@@ -60,16 +59,16 @@ if (session_id() == '' || !isset($_SESSION['user_uuid'])) {
 				<section>
 					<form method="post">
 						<div class="row gtr-uniform">
-							<div class="col-6 col-12-small">
-								<input type="checkbox" id="all_users" name="all_users">
+							<div class="col-4 col-12-small">
+								<input type="checkbox" id="all_users" name="all_users" <? if (!isset($user_uuid)) echo 'checked'; ?>>
 								<label for="all_users">Show all exercises</label>
 							</div>
-							<div class="col-6 col-12-small">
-								<input type="checkbox" id="all_periods" name="all_periods">
+							<div class="col-4 col-12-small">
+								<input type="checkbox" id="all_periods" name="all_periods" <? if (!isset($period)) echo 'checked'; ?>>
 								<label for="all_periods">Show all periods</label>
 							</div>
 
-							<div class="col-12">
+							<div class="col-4 col-12-small">
 								<ul class="actions">
 									<li>
 										<input type="submit" value="Filter" class="primary" />

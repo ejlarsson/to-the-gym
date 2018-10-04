@@ -35,7 +35,7 @@ include_once('session.php');
 						<a href="/exercises.php#show_exercises" class="button default">See exercises</a>
 					</li>
 					<li>
-						<a href="/bids.php" class="button default">See bids</a>
+						<a href="/bids.php#show_bids" class="button default">See bids</a>
 					</li>
 				</ul>
 				<? } else { ?>
