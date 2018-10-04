@@ -4,7 +4,11 @@ session_start();
 if (isset($_POST['login']) && isset($_POST['name'])) {
 	
 	include_once 'sql.php';
-		
+	
+	
+	echo $_POST['login'] . ' ø ' . isset($_POST['password']) . ' å ' . ($_POST['password'] != '') . '<br>';
+	
+	
 	if (createUser(getConnection(), $_POST['login'], $_POST['name'], $_POST['password']) === TRUE) {
 		$users = queryUsers($conn, NULL, $_POST['login']);
 		$user = pg_fetch_row($res);
