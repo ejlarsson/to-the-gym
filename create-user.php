@@ -16,7 +16,7 @@ if (!empty($_POST['login']) && !empty($_POST['name'])) {
 		$_SESSION['user_uuid'] = $user[1];
 		$_SESSION['user_name'] = $user[2];
 		
-		echo 'uuid:'.$_SESSION['user_uuid'].' name:'.$_SESSION['user_name']
+		echo 'uuid:'.$_SESSION['user_uuid'].' name:'.$_SESSION['user_name'];
 		
 		exit;
 		header('Location: /');
