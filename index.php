@@ -74,10 +74,10 @@ include_once('session.php');
 					<form method="post" action="/create-exercise.php">
 						<div class="row gtr-uniform">
 							<div class="col-6 col-12-xsmall">
-								<input type="number" name="duration" id="exercise_duration" value="" placeholder="Duration in minutes" min="30" max="1440" <? if $no_current_bid echo 'disabled'; ?> />
+								<input type="number" name="duration" id="exercise_duration" value="" placeholder="Duration in minutes" min="30" max="1440" <? if ($no_current_bid) echo 'disabled'; ?> />
 							</div>
 							<div class="col-6 col-12-xsmall">
-									Date:<input type="date" name="date" id="exercise_date" value="" placeholder="YYYY-MM-DD" <? if $no_current_bid echo 'disabled'; ?> />
+									Date:<input type="date" name="date" id="exercise_date" value="" placeholder="YYYY-MM-DD" <? if ($no_current_bid) echo 'disabled'; ?> />
 								<script>document.getElementById('exercise_date').valueAsDate = new Date();</script>
 							</div>
 							<div class="col-12">
