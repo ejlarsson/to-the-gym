@@ -141,7 +141,7 @@ include_once('session.php');
 					</section>
 				</div>
 			</section>
-
+<? } ?>
 		<!-- Footer -->
 			<footer id="footer">
 				<ul class="icons">
