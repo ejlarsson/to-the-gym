@@ -22,10 +22,10 @@ function validateUserPassword($conn, $login, $password = NULL) {
 
 function createUser($conn, $login, $name, $password = NULL) {
 	if (isset($password)) {
-		$query = 'INSERT INTO ttg.exercise_user (login, name, not_secure_pw) VALUES ($1, $2, $3) RETURNING uuid, name;'
+		$query = 'INSERT INTO ttg.exercise_user (login, name, not_secure_pw) VALUES ($1, $2, $3) RETURNING uuid, name;';
 		$arr = array($login, $name, $password);
 	} else {
-		$query = 'INSERT INTO ttg.exercise_user (login, name) VALUES ($1, $2) RETURNING uuid, name;'
+		$query = 'INSERT INTO ttg.exercise_user (login, name) VALUES ($1, $2) RETURNING uuid, name;';
 		$arr = array($login, $name);
 	}
 	
