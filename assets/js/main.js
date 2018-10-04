@@ -21,9 +21,9 @@
 
 	// Play initial animations on page load.
 		$window.on('load', function() {
-			window.setTimeout(function() {
+			//window.setTimeout(function() {
 				$body.removeClass('is-preload');
-			}, 3000);
+			//}, 3000);
 		});
 
 	// Mobile?
