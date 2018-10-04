@@ -81,7 +81,7 @@ include_once('session.php');
 								<script>document.getElementById('exercise_date').valueAsDate = new Date();</script>
 							</div>
 							<div class="col-12">
-								<select name="exercise_type" id="exercise_type" <? if $no_current_bid echo 'disabled'; ?>>
+								<select name="exercise_type" id="exercise_type" <? if ($no_current_bid) echo 'disabled'; ?>>
 									<option value="">- Exercise type -</option>
 									<option value="1">This</option>
 									<option value="2">Does</option>
@@ -92,7 +92,7 @@ include_once('session.php');
 							<div class="col-12">
 								<ul class="actions">
 									<li>
-										<input type="submit" value="Register exercise" class="primary" <? if $no_current_bid echo 'disabled'; ?> />
+										<input type="submit" value="Register exercise" class="primary" <? if ($no_current_bid) echo 'disabled'; ?> />
 									</li>
 									<li>
 										<input type="reset" value="Reset" />
