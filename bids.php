@@ -51,10 +51,11 @@ if (session_id() == '' || !isset($_SESSION['user_uuid'])) {
 		<section id="show_bids" class="wrapper">
 			<div class="inner">
 
+				<header class="major">
+					<h2>Your bids</h2>
+				</header>
+				
 				<section>
-					<h4>Bids</h4>
-
-					<h5>Alternate</h5>
 					<div class="table-wrapper">
 						<table class="alt">
 							<thead>
@@ -96,7 +97,7 @@ if (session_id() == '' || !isset($_SESSION['user_uuid'])) {
 			<div class="inner">
 
 				<header class="major">
-					<h2>Create bid</h2>
+					<h2>Create a bid</h2>
 				</header>
 
 				<section>
@@ -106,21 +107,9 @@ if (session_id() == '' || !isset($_SESSION['user_uuid'])) {
 								<input type="number" name="bid" id="bid" value="" placeholder="Bid for current period" min="1" max="99" />
 							</div>
 							<div class="col-12">
-								<select name="exercise_type" id="exercise_type">
-									<option value="">- Exercise type -</option>
-									<option value="1">This</option>
-									<option value="2">Does</option>
-									<option value="3">Not</option>
-									<option value="4">Work</option>
-								</select>
-							</div>
-							<div class="col-12">
 								<ul class="actions">
 									<li>
-										<input type="submit" value="Register exercise" class="primary" />
-									</li>
-									<li>
-										<input type="reset" value="Reset" />
+										<input type="submit" value="Register bid" class="primary" />
 									</li>
 								</ul>
 							</div>

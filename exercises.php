@@ -60,7 +60,7 @@ if (session_id() == '' || !isset($_SESSION['user_uuid'])) {
 					<form method="post">
 						<div class="row gtr-uniform">
 							<div class="col-4 col-12-small">
-								<input type="checkbox" id="all_users" name="all_users" <? if (!isset($req_user)) echo 'checked'; ?>>
+								<input type="checkbox" id="all_users" name="all_users" <? if (isset($req_user)) echo 'checked'; ?>>
 								<label for="all_users">Show all exercises</label>
 							</div>
 							<div class="col-4 col-12-small">
