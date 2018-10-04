@@ -37,6 +37,9 @@ include_once('session.php');
 					<li>
 						<a href="/bids.php#show_bids" class="button default">See bids</a>
 					</li>
+					<li>
+						<a href="/logout.php" class="button default">Logout</a>
+					</li>
 				</ul>
 				<? } else { ?>
 				<ul class="actions">
