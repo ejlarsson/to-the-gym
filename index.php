@@ -55,10 +55,11 @@ include_once('session.php');
 		</header>
 
 		<!-- Four -->
-		<?php if (isset($user_uuid)) { 
+		<?php 
+		if(isset($user_uuid)) { 
 		
-		$res = retrieveCurrentBidId(getConnection(), $user_uuid);
-		$no_current_bid = empty($res);
+		//$res = retrieveCurrentBidId(getConnection(), $user_uuid);
+		//$no_current_bid = empty($res);
 		
 		?>
 		<section id="create_exercise" class="wrapper">
@@ -78,14 +79,14 @@ include_once('session.php');
 					<form method="post" action="/create-exercise.php">
 						<div class="row gtr-uniform">
 							<div class="col-6 col-12-xsmall">
-								<input type="number" name="duration" id="exercise_duration" value="" placeholder="Duration in minutes" min="30" max="1440" <? if ($no_current_bid) echo 'disabled'; ?> />
+								<input type="number" name="duration" id="exercise_duration" value="" placeholder="Duration in minutes" min="30" max="1440" <? //if ($no_current_bid) echo 'disabled'; ?> />
 							</div>
 							<div class="col-6 col-12-xsmall">
-									<input type="date" name="date" id="exercise_date" value="" placeholder="YYYY-MM-DD" <? if ($no_current_bid) echo 'disabled'; ?> />
+									<input type="date" name="date" id="exercise_date" value="" placeholder="YYYY-MM-DD" <? //if ($no_current_bid) echo 'disabled'; ?> />
 								<script>document.getElementById('exercise_date').valueAsDate = new Date();</script>
 							</div>
 							<div class="col-12">
-								<select name="exercise_type" id="exercise_type" <? if ($no_current_bid) echo 'disabled'; ?>>
+								<select name="exercise_type" id="exercise_type" <? //if ($no_current_bid) echo 'disabled'; ?>>
 									<option value="">- Exercise type -</option>
 									<option value="1">This</option>
 									<option value="2">Does</option>
@@ -96,7 +97,7 @@ include_once('session.php');
 							<div class="col-12">
 								<ul class="actions">
 									<li>
-										<input type="submit" value="Register exercise" class="primary" <? if ($no_current_bid) echo 'disabled'; ?> />
+										<input type="submit" value="Register exercise" class="primary" <? //if ($no_current_bid) echo 'disabled'; ?> />
 									</li>
 									<li>
 										<input type="reset" value="Reset" />
