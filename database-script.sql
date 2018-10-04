@@ -33,7 +33,7 @@ CREATE TABLE bid (
  id serial UNIQUE NOT NULL,
  exercise_user_id integer NOT NULL,
  period_id integer NOT NULL,
- bid_uuid UUID UNIQUE NOT NULL DEFAULT uuid_generate_v4(),
+ uuid UUID UNIQUE NOT NULL DEFAULT uuid_generate_v4(),
  number smallint NOT NULL,
  PRIMARY KEY (exercise_user_id, period_id),
  CONSTRAINT bid_user_fkey FOREIGN KEY (exercise_user_id)

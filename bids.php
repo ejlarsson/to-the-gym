@@ -15,6 +15,7 @@ if (session_id() == '' || !isset($_SESSION['user_uuid'])) {
 		echo "An error occurred.\n";
 		exit;
 	}
+	print_r($res);
 }
 ?>
 <html>
