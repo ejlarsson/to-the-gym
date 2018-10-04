@@ -38,10 +38,10 @@ if (session_id() == '' || !isset($_SESSION['user_uuid'])) {
 						<a href="/index.php" class="button primary">Home</a>
 					</li>
 					<li>
-						<a href="/index.php#show_bids" class="button default">Show bids</a>
+						<a href="#show_bids" class="button default">Show bids</a>
 					</li>
 					<li>
-						<a href="/index.php#create_bid" class="button default">Create bid</a>
+						<a href="#create_bid" class="button default">Create bid</a>
 					</li>
 				</ul>
 			</div>
@@ -92,6 +92,44 @@ if (session_id() == '' || !isset($_SESSION['user_uuid'])) {
 			</div>
 		</section>
 
+		<section id="create_bid" class="wrapper">
+			<div class="inner">
+
+				<header class="major">
+					<h2>Create bid</h2>
+				</header>
+
+				<section>
+					<form method="post" action="/create-bid.php">
+						<div class="row gtr-uniform">
+							<div class="col-12 col-12-xsmall">
+								<input type="number" name="bid" id="bid" value="" placeholder="Bid for current period" min="1" max="99" />
+							</div>
+							<div class="col-12">
+								<select name="exercise_type" id="exercise_type">
+									<option value="">- Exercise type -</option>
+									<option value="1">This</option>
+									<option value="2">Does</option>
+									<option value="3">Not</option>
+									<option value="4">Work</option>
+								</select>
+							</div>
+							<div class="col-12">
+								<ul class="actions">
+									<li>
+										<input type="submit" value="Register exercise" class="primary" />
+									</li>
+									<li>
+										<input type="reset" value="Reset" />
+									</li>
+								</ul>
+							</div>
+						</div>
+					</form>
+				</section>
+			</div>
+		</section>
+		
 		<!-- Footer -->
 		<footer id="footer">
 		</footer>

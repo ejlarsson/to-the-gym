@@ -8,12 +8,12 @@ if (session_id() == '' || !isset($_SESSION['user_uuid'])) {
 	
 	/* Expected link parameters: period, exercise, user */
 	
-	if(isset($_POST['all_users'])) $user_uuid = NULL;
-	if(isset($_POST['all_periods'])) $period = NULL; else $period = 'CURRENT';
+	if(isset($_POST['all_users'])) $req_user = NULL;
+	if(isset($_POST['all_periods'])) $req_period = NULL; else $req_period = 'CURRENT';
 //	if(isset($_GET['exercise'])) $exercise_uuid = $_GET['exercise']; else $exercise_uuid = NULL;
 	$exercise_uuid = NULL;
 	
-	$res = queryExercises(getConnection(), $user_uuid, $period, $exercise_uuid);
+	$res = queryExercises(getConnection(), $req_user, $req_period, $exercise_uuid);
 	
 	if (!$res) {
 		echo "An error occurred.\n";
@@ -60,11 +60,11 @@ if (session_id() == '' || !isset($_SESSION['user_uuid'])) {
 					<form method="post">
 						<div class="row gtr-uniform">
 							<div class="col-4 col-12-small">
-								<input type="checkbox" id="all_users" name="all_users" <? if (!isset($user_uuid)) echo 'checked'; ?>>
+								<input type="checkbox" id="all_users" name="all_users" <? if (!isset($req_user)) echo 'checked'; ?>>
 								<label for="all_users">Show all exercises</label>
 							</div>
 							<div class="col-4 col-12-small">
-								<input type="checkbox" id="all_periods" name="all_periods" <? if (!isset($period)) echo 'checked'; ?>>
+								<input type="checkbox" id="all_periods" name="all_periods" <? if (!isset($req_period)) echo 'checked'; ?>>
 								<label for="all_periods">Show all periods</label>
 							</div>
 

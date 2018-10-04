@@ -65,7 +65,7 @@ include_once('session.php');
 					<form method="post" action="/create-exercise.php">
 						<div class="row gtr-uniform">
 							<div class="col-6 col-12-xsmall">
-								<input type="number" name="duration" id="exercise_duration" value="" placeholder="Duration in minutes" />
+								<input type="number" name="duration" id="exercise_duration" value="" placeholder="Duration in minutes" min="30" max="1440" />
 							</div>
 							<div class="col-6 col-12-xsmall">
 									Date:<input type="date" name="date" id="exercise_date" value="" placeholder="YYYY-MM-DD" />
@@ -142,13 +142,13 @@ include_once('session.php');
 						<form method="post" action="/create-user.php">
 							<div class="row gtr-uniform">
 								<div class="col-6 col-12-xsmall">
-									<input type="text" name="login" id="login" value="" placeholder="Login" />
+									<input type="text" name="login" id="login" value="" placeholder="Login" maxlength="50" />
 								</div>
 								<div class="col-6 col-12-xsmall">
 									<input type="password" name="password" id="password" value="" placeholder="Password" />
 								</div>
 								<div class="col-6 col-12-xsmall">
-									<input type="text" name="name" id="name" value="" placeholder="Name" />
+									<input type="text" name="name" id="name" value="" placeholder="Name" maxlength="255" />
 								</div>
 								<div class="col-12">
 									<ul class="actions">
