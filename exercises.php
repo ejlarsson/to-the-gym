@@ -31,7 +31,7 @@ if (session_id() == '' || !isset($_SESSION['user_uuid'])) {
 			<link rel="stylesheet" href="assets/css/noscript.css" />
 		</noscript>
 	</head>
-	<body class="is-preload">
+	<body>
 
 		<!-- Header -->
 		<header id="header">
