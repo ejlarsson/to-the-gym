@@ -160,13 +160,13 @@ function queryPeriods($conn, $period_status = NULL) {
 }
 
 function queryUsers($conn, $user_uuid = NULL, $login = NULL) {
-	$query = 'SELECT u.id AS uid, u.uuid AS user_uuid, u.name AS user_name FROM exercise_user u';
+	$query = 'SELECT u.id AS uid, u.uuid AS user_uuid, u.name AS user_name, u.login AS user_login FROM exercise_user u';
 	$arr = array();
 	if (isset($user_uuid)) {
 		$arr[] = $user_uuid;
 		$query = $query . ' WHERE u.uuid = $1';
 	}
-	else if (isset($login)) {
+	elseif (isset($login)) {
 		$arr[] = $login;
 		$query = $query . ' WHERE u.login = $1';
 	}
