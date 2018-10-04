@@ -75,7 +75,7 @@ if (session_id() == '' || !isset($_SESSION['user_uuid'])) {
 										if(isset($row['bid']) AND $row['period_status'] === 'CURRENT') $current_bid_exist = TRUE; else $current_bid_exist = FALSE;
 										if($row['period_status'] === 'CURRENT') $current_period_exist = TRUE;
 										
-										echo '<br>' . $current_bid_exist . " | " . $current_period_exist . ' ' . $row['period_status'] . ' ' . $row['bid'];
+										echo '<br>' . $current_bid_exist . " | " . $current_period_exist . ' ' . isset($row['bid']);
 								?>
 								
 								<tr <? if($row['period_status'] === 'CURRENT') echo 'style="font-weight:bold"'; ?>>
