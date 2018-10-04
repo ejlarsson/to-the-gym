@@ -17,9 +17,6 @@ function validateUserPassword($conn, $login, $password = NULL) {
 		$query = 'SELECT uuid, name FROM ttg.exercise_user WHERE login = $1 AND not_secure_pw is null';
 	}
 	
-	echo $query;
-	exit;
-	
 	return pg_query_params($conn, $query, $arr); 
 }
 
