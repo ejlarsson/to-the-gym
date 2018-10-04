@@ -16,8 +16,10 @@ if (session_id() == '' || !isset($_SESSION['user_uuid'])) {
 		echo $date . " | " . (isset($duration)) . " | " . ($type != '') . " | " . $user_uuid;
 		
 		if(createExercise(getConnection(), $user_uuid, $date, $duration, $type)) {
+			header('Location: /exercises.php');
 			echo "<noscript>Trening er registrert</noscript>";
 		} else {
+			header('Location: /');
 			echo "<script>alert('Could not create exercise');</script>";
 			echo "<noscript>Could not create exercise</noscript>";
 		}
@@ -25,14 +27,3 @@ if (session_id() == '' || !isset($_SESSION['user_uuid'])) {
 }
 	
 ?>
-
-<form method="post">	
-	<br>Treningstid:<input type="number" name="duration" min="30" max="1440">
-	<br>Dato:<input type="date" name="date" id="exercise_date">
-	<br>Type:<select name="exercise_type"><option selected /><option value="1">Løpning</option>
-	<br><input type="submit">
-</form>
-
-<script>
-document.getElementById('exercise_date').value = new Date().toDateInputValue();
-</script>
