@@ -15,9 +15,7 @@ include_once('session.php');
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
-		<noscript>
-			<link rel="stylesheet" href="assets/css/noscript.css" />
-		</noscript>
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 	</head>
 	<body class="is-preload">
 
@@ -97,8 +95,9 @@ include_once('session.php');
 				</section>
 			</div>
 		</section>
+		
 		<? } else { ?>
-
+		
 		<section id="login" class="wrapper">
 			<div class="inner">
 
