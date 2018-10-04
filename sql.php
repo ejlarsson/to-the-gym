@@ -144,7 +144,7 @@ function retrieveCurrentBidId($conn, $user_uuid) {
 }
 
 function queryPeriods($conn, $period_status = NULL) {
-	$query = 'SELECT p.id AS pid, p.name AS period_name, p.status AS p.status FROM ttg.period AS p';
+	$query = 'SELECT p.id AS pid, p.name AS period_name, p.status AS period_status FROM ttg.period AS p';
 	$arr = array();
 	if (isset($period_status)) {
 		$arr[] = $period_status;
