@@ -37,6 +37,7 @@ if (session_id() == '' || !isset($_SESSION['user_uuid'])) {
 		<header id="header">
 			<div class="content">
 				<h1><a href="#">Let's go to the gym</a></h1>
+				<p>Lorem ipsum!</p>
 				<ul class="actions">
 					<li>
 						<a href="/index.php#create_exercise" class="button primary">Log exercise</a>
