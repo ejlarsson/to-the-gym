@@ -9,7 +9,7 @@ if (session_id() == '' || !isset($_SESSION['user_uuid'])) {
 	/* Expected link parameters: period, exercise, user */
 	
 	if(isset($_POST['all_users'])) $user_uuid = NULL;
-	if(isset($_POST['all_periods'])) $periods = NULL; else $periods = 'CURRENT';
+	if(isset($_POST['all_periods'])) $period = NULL; else $period = 'CURRENT';
 //	if(isset($_GET['exercise'])) $exercise_uuid = $_GET['exercise']; else $exercise_uuid = NULL;
 	$exercise_uuid = NULL;
 	
@@ -36,6 +36,7 @@ if (session_id() == '' || !isset($_SESSION['user_uuid'])) {
 		<!-- Header -->
 		<header id="header">
 			<div class="content">
+				<h1><a href="#">Let's go to the gym</a></h1>
 				<ul class="actions">
 					<li>
 						<a href="/index.php#create_exercise" class="button primary">Log exercise</a>

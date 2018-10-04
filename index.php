@@ -27,7 +27,7 @@ include_once('session.php');
 					<p>Welcome <? echo $user_name; ?>!</p>
 					<ul class="actions">
 						<li><a href="#create_exercise" class="button primary">Log exercise</a></li>
-						<li><a href="/exercises.php" class="button default">See exercises</a></li>
+						<li><a href="/exercises.php#show_exercises" class="button default">See exercises</a></li>
 						<li><a href="/bids.php" class="button default">See bids</a></li>
 					</ul>
 					<? } else { ?>
