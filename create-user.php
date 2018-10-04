@@ -10,11 +10,11 @@ if (!empty($_POST['login']) && !empty($_POST['name'])) {
 	if ($res) {
 		echo 'got here<br>';
 		
-		$users = queryUsers($conn, NULL, $_POST['login']);
+		//$users = queryUsers($conn, NULL, $_POST['login']);
 		$user = pg_fetch_row($res);
 		
-		$_SESSION['user_uuid'] = $user[1];
-		$_SESSION['user_name'] = $user[2];
+		$_SESSION['user_uuid'] = $user[0];
+		$_SESSION['user_name'] = $user[1];
 		
 		echo 'uuid:'.$_SESSION['user_uuid'].' name:'.$_SESSION['user_name'] . ' user:' . empty($user) . $user;
 		

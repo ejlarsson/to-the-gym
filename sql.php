@@ -22,18 +22,14 @@ function validateUserPassword($conn, $login, $password = NULL) {
 
 function createUser($conn, $login, $name, $password = NULL) {
 	if (isset($password)) {
-		$arr = array("login" => $login, "name" => $name, "not_secure_pw" => $password);
+		$query = 'INSERT INTO ttg.exercise_user (login, name, not_secure_pw) VALUES ($1, $2, $3) RETURNING uuid, name;'
+		$arr = array($login, $name, $password);
 	} else {
-		$arr = array("login" => $login, "name" => $name);
+		$query = 'INSERT INTO ttg.exercise_user (login, name) VALUES ($1, $2) RETURNING uuid, name;'
+		$arr = array($login, $name);
 	}
 	
-	$res = pg_insert($conn, 'ttg.exercise_user', $arr);
-	
-	if ($res) {
-		return TRUE;
-	} else {
-		return FALSE;
-	}
+	return pg_query_params($conn, $query, $arr);
 }
 
 function queryBids($conn, $user_uuid = NULL, $period_status = NULL) {
@@ -168,12 +164,11 @@ function queryUsers($conn, $user_uuid = NULL, $login = NULL) {
 	}
 	elseif (isset($login)) {
 		$arr[] = $login;
-		$query = $query . " WHERE u.login = '$1'";
+		$query = $query . ' WHERE u.login = $1';
 	}
 	$query = $query . ' ORDER BY u.id ASC';
 	
 	echo isset($user_uuid) . ' = ' . $user_uuid . ' | ' . isset($login) . ' = ' . $login . ' | ' . $query . '<br>';
-	
 	
 	return pg_query_params($conn, $query, $arr);
 }
