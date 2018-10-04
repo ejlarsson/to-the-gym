@@ -138,19 +138,19 @@ include_once('session.php');
 				</header>
 
 				<section>
-					<h4>
+						<h4>
 							Bruk ikke et passord du vanligvis bruker da jeg ikke giddet at gjøre dette sikkert med kryptering. Happy hacking...<br>
 							Kan nevnes at jeg ikke giddet skape noen valideringersfeil etc. så får du feil så er det noe som er feil med det du skrev inn :D
 						</h4>
 						<form method="post" action="/create-user.php">
 							<div class="row gtr-uniform">
-								<div class="col-6 col-12-xsmall">
+								<div class="col-4 col-12-xsmall">
 									<input type="text" name="login" id="login" value="" placeholder="Login" maxlength="50" />
 								</div>
-								<div class="col-6 col-12-xsmall">
+								<div class="col-4 col-12-xsmall">
 									<input type="password" name="password" id="password" value="" placeholder="Password" />
 								</div>
-								<div class="col-6 col-12-xsmall">
+								<div class="col-4 col-12-xsmall">
 									<input type="text" name="name" id="name" value="" placeholder="Name" maxlength="255" />
 								</div>
 								<div class="col-12">

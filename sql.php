@@ -26,13 +26,12 @@ function createUser($conn, $login, $name, $password = NULL) {
 	} else {
 		$arr = array("login" => $login, "name" => $name);
 	}
+	
 	$res = pg_insert($conn, 'ttg.exercise_user', $arr);
 	
 	if ($res) {
-		echo "POST data is successfully logged\n";
 		return TRUE;
 	} else {
-		echo "User must have sent wrong inputs\n";
 		return FALSE;
 	}
 }
@@ -106,10 +105,8 @@ function createExercise($conn, $user_uuid, $date, $duration = NULL, $type = NULL
 	$res = pg_insert($conn, 'ttg.exercise', $arr);
 	
 	if ($res) {
-		echo "POST data is successfully logged\n";
 		return TRUE;
 	} else {
-		echo "User must have sent wrong inputs\n";
 		return FALSE;
 	}
 }
@@ -132,10 +129,8 @@ function createBid($conn, $user_uuid, $bid) {
 	$res = pg_insert($conn, 'ttg.bid', $arr);
 	
 	if ($res) {
-		echo "POST data is successfully logged\n";
 		return TRUE;
 	} else {
-		echo "User must have sent wrong inputs\n";
 		return FALSE;
 	}
 }
@@ -179,5 +174,4 @@ function queryUsers($conn, $user_uuid = NULL, $login = NULL) {
 	
 	return pg_query_params($conn, $query, $arr);
 }
-
 ?>

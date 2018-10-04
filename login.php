@@ -12,15 +12,15 @@ if (isset($_POST['login'])) {
 	
 	if ($res) {
 		$row = pg_fetch_row($res);
+		
 		$_SESSION['user_uuid'] = $row[0];
 		$_SESSION['user_name'] = $row[1];
+		echo $_SESSION['user_uuid'] . ' æ ' . $_SESSION['user_name'];
+		exit;
 		
-		header('Location: /'); //redirect to main
+		header('Location: /');
 	} else {
-		header('Location: /'); //redirect to main
-		echo "<script>alert('Wrong login or password');</script>";
-		echo "<noscript>Wrong login or password</noscript>";
+		header('Location: /');
 	}
 }
-
 ?>
