@@ -164,7 +164,7 @@ function queryUsers($conn, $user_uuid = NULL, $login = NULL) {
 	$arr = array();
 	if (isset($user_uuid)) {
 		$arr[] = $user_uuid;
-		$query = $query . ' WHERE u.name = $1';
+		$query = $query . ' WHERE u.uuid = $1';
 	}
 	else if (isset($login)) {
 		$arr[] = $login;

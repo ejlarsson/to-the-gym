@@ -64,8 +64,8 @@ INSERT INTO period (id, name, status) VALUES (1, 'Oct-18', 'PAST');
 INSERT INTO period (id, name, status) VALUES (2, 'Nov-18', 'CURRENT');
 INSERT INTO period (id, name, status) VALUES (3, 'Dec-18', 'FUTURE');
 
-INSERT INTO exercise_user (id, login, name) VALUES (1, 'test', 'test');
-INSERT INTO exercise_user (id, login, not_secure_pw, name) VALUES (2, 'admin', 'admin', 'admin');
+INSERT INTO exercise_user (login, name) VALUES ('test', 'test');
+INSERT INTO exercise_user (login, not_secure_pw, name) VALUES ('admin', 'admin', 'admin');
 
 INSERT INTO bid (exercise_user_id, period_id, number) VALUES (1, 1, 3);
 INSERT INTO bid (exercise_user_id, period_id, number) VALUES (1, 2, 5);
