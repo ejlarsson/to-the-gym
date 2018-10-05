@@ -16,7 +16,7 @@ if (session_id() == '' || !isset($_SESSION['user_uuid'])) {
 		echo $date . " | " . (isset($duration)) . " | " . ($type != '') . " | " . $user_uuid;
 		
 		if(createExercise(getConnection(), $user_uuid, $date, $duration, $type)) {
-			header('Location: /exercises.php');
+			header('Location: /exercises.php#show_exercises');
 			echo "<noscript>Trening er registrert</noscript>";
 		} else {
 			header('Location: /');

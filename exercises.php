@@ -57,7 +57,7 @@ if (session_id() == '' || !isset($_SESSION['user_uuid'])) {
 				</header>
 
 				<section>
-					<form method="post">
+					<form method="post" action="#show_exercises">
 						<div class="row gtr-uniform">
 							<div class="col-4 col-12-small">
 								<input type="checkbox" id="all_users" name="all_users" <? if (!isset($req_user)) echo 'checked'; ?>>
