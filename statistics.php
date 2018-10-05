@@ -1,5 +1,5 @@
 <?php
-include_once 'session.php';
+/*include_once 'session.php';
 
 if (session_id() == '' || !isset($_SESSION['user_uuid'])) {
 	header('Location: /'); //redirect to main
@@ -12,7 +12,7 @@ if (session_id() == '' || !isset($_SESSION['user_uuid'])) {
 		echo "An error occurred.\n";
 		exit;
 	}*/
-}
+}*/
 ?>
 <html>
 	<head>
@@ -53,9 +53,9 @@ if (session_id() == '' || !isset($_SESSION['user_uuid'])) {
 
 		};
 
-		var ctx = document.getElementById('canvas').getContext('2d');
-
 		window.onload = function() {
+			var ctx = document.getElementById('canvas').getContext('2d');
+
 			window.myHorizontalBar = new Chart(ctx, {
 				type: 'horizontalBar',
 				data: data,
