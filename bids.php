@@ -88,7 +88,7 @@ if (session_id() == '' || !isset($_SESSION['user_uuid'])) {
 										else { echo $row['bid']; } ?>
 									</td>
 									<td>
-										<? 	if ($row['total'] === 0) { echo '<a href="/index.php#create_exercise">0</a>'; } 
+										<? 	if ($row['total'] === '0') { echo '<a href="/index.php#create_exercise">0</a>'; } 
 											else { echo '<a href="/exercises.php">'.$row['total'].'</a>'; } ?>
 									</td>
 									<td>
