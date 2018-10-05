@@ -68,21 +68,11 @@ if (session_id() == '' || !isset($_SESSION['user_uuid'])) {
 		<footer id="footer">
 		</footer>
 
-		<!-- Scripts -->
-		<script src="assets/js/jquery.min.js"/>
-		<script src="assets/js/jquery.scrolly.min.js"/>
-		<script src="assets/js/browser.min.js"/>
-		<script src="assets/js/breakpoints.min.js"/>
-		<script src="assets/js/util.js"/>
-		<script src="assets/js/main.js"/>
-
-
-		<script src="assets/js/chart.bundle.js"/>
+				<script src="assets/js/chart.bundle.js"/>
 		<script src="assets/js/chart.bundle.min.js"/>
 
 		<script>
 
-			var color = Chart.helpers.color;
 			var data = {
 				labels: ['Arne', 'Bert', 'Carl', 'David'],
 				datasets: [{
@@ -136,6 +126,14 @@ if (session_id() == '' || !isset($_SESSION['user_uuid'])) {
 			};
 
 		</script>
+		
+		<!-- Scripts -->
+		<script src="assets/js/jquery.min.js" />
+		<script src="assets/js/jquery.scrolly.min.js"/>
+		<script src="assets/js/browser.min.js"/>
+		<script src="assets/js/breakpoints.min.js"/>
+		<script src="assets/js/util.js"/>
+		<script src="assets/js/main.js"/>
 
 	</body>
 </html>
