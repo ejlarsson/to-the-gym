@@ -175,6 +175,9 @@ function queryUsers($conn, $user_uuid = NULL, $login = NULL) {
 	}
 	$query = $query . ' ORDER BY u.id ASC';
 	
+	echo $query;
+	echo '<pre>'; print_r($arr); echo '</pre>';
+
 	return pg_query_params($conn, $query, $arr);
 }
 ?>
