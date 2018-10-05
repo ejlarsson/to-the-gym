@@ -113,9 +113,14 @@ function createBid($conn, $user_uuid, $bid) {
 
 	$periods = queryPeriods($conn, 'CURRENT');
 	$period = pg_fetch_row($res);
+
+	echo '<pre>'; print_r($periods); echo '</pre>';
+
 	
 	$users = queryUsers($conn, $user_uuid);
 	$user = pg_fetch_row($res);
+
+	echo '<pre>'; print_r($users); echo '</pre>';
 	
 	$arr = array();
 	$arr["number"] = $bid;
