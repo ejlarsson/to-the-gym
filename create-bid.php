@@ -1,11 +1,11 @@
 <?php
 session_start(); //gets session id from cookies, or prepa
 
-if (session_id() == '' || !isset($_SESSION['user_uuid'])) {
+if (session_id() == '' || !empty($_SESSION['user_uuid'])) {
 	header('Location: /'); //redirect to main
 } else {
 
-	if(isset($_POST['bid'])) {
+	if(!empty($_POST['bid'])) {
 		$bid = $_POST['bid'];
 		$user_uuid = $_SESSION['user_uuid'];
 		

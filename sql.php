@@ -122,8 +122,10 @@ function createBid($conn, $user_uuid, $bid) {
 	$arr["exercise_user_id"] = $user[0];
 	$arr["period_id"] = $period[0];
 	
-	$res = pg_insert($conn, 'ttg.bid', $arr);
+	echo '<pre>'; print_r($arr); echo '</pre>';
 	
+	$res = pg_insert($conn, 'ttg.bid', $arr);
+	exit;
 	if ($res) {
 		return TRUE;
 	} else {
