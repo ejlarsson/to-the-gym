@@ -34,7 +34,12 @@ function createUser($conn, $login, $name, $password = NULL) {
 
 function queryBids($conn, $user_uuid = NULL, $period_status = NULL) {
 	
-	$query = 'SELECT p.name AS period_name, p.status AS period_status, q2.bid AS bid, q2.total AS total, q2.duration AS duration FROM ttg.period p LEFT JOIN (SELECT b.period_id AS pid, b.number AS bid, q1.total AS total, q1.duration AS duration FROM ttg.bid b INNER JOIN ttg.exercise_user eu ON eu.id = b.exercise_user_id LEFT JOIN (SELECT ee.bid_id AS bid, COALESCE(COUNT(ee.id),0) AS total, COALESCE(SUM(exercise_duration_minutes),0) AS duration FROM ttg.exercise ee GROUP BY ee.bid_id) q1 ON q1.bid = b.id';
+	$query = 	'SELECT p.name AS period_name, p.status AS period_status, q2.bid AS bid, q2.total AS total, q2.duration AS duration '.
+				'FROM ttg.period p LEFT JOIN ('.
+					'SELECT b.period_id AS pid, b.number AS bid, COALESCE(q1.total,0) AS total, COALESCE(q1.duration,0) AS duration '.
+					'FROM ttg.bid b INNER JOIN ttg.exercise_user eu ON eu.id = b.exercise_user_id LEFT JOIN ('.
+						'SELECT ee.bid_id AS bid, COUNT(ee.id) AS total, SUM(exercise_duration_minutes) AS duration '.
+						'FROM ttg.exercise ee GROUP BY ee.bid_id) q1 ON q1.bid = b.id';
 
 	$arr = array();
 	if (isset($user_uuid)) { 
