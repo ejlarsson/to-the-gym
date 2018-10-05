@@ -112,13 +112,13 @@ function createBid($conn, $user_uuid, $bid) {
 	if(isset($bid_id)) return FALSE;
 
 	$periods = queryPeriods($conn, 'CURRENT');
-	$period = pg_fetch_row($res);
+	$period = pg_fetch_assoc($res);
 
 	echo '<pre>'; print_r($period); echo '</pre>';
 
 	
 	$users = queryUsers($conn, $user_uuid);
-	$user = pg_fetch_row($res);
+	$user = pg_fetch_assoc($res);
 
 	echo '<pre>'; print_r($user); echo '</pre>';
 	
