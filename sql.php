@@ -55,11 +55,7 @@ function queryBids($conn, $user_uuid = NULL, $period_status = NULL) {
 	}
 	
 	$query = $query . ' ORDER BY p.id ASC';
-	
-	echo $query;
-	echo '<br><pre>'; print_r($arr); echo '</pre>';
-	exit;
-	
+		
 	return pg_query_params($conn, $query, $arr);
 }
 
