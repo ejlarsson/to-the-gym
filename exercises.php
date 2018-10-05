@@ -39,10 +39,10 @@ if (session_id() == '' || !isset($_SESSION['user_uuid'])) {
 				<h1><a href="#">Let's go to the gym</a></h1>
 				<ul class="actions">
 					<li>
-						<a href="/index.php" class="button primary">Home</a>
+						<a href="/" class="button primary">Home</a>
 					</li>
 					<li>
-						<a href="/index.php#create_exercise" class="button default">Log exercise</a>
+						<a href="/#create_exercise" class="button default">Log exercise</a>
 					</li>
 				</ul>
 			</div>

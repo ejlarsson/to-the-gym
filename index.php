@@ -38,6 +38,9 @@ include_once('session.php');
 						<a href="/bids.php#show_bids" class="button default">See bids</a>
 					</li>
 					<li>
+						<a href="/statistics.php#show_statistics" class="button default">See statistics</a>
+					</li>
+					<li>
 						<a href="/logout.php" class="button default">Logout</a>
 					</li>
 				</ul>
