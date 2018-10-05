@@ -123,7 +123,7 @@ function createBid($conn, $user_uuid, $bid) {
 	$arr["period_id"] = $period[0];
 	
 	echo '<pre>'; print_r($arr); echo '</pre>';
-	
+	exit;
 	$res = pg_insert($conn, 'ttg.bid', $arr);
 	exit;
 	if ($res) {
