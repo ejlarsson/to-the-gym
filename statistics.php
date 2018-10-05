@@ -31,7 +31,6 @@ if (session_id() == '' || !isset($_SESSION['user_uuid'])) {
 		<script src="assets/js/util.js"/>
 		<script src="assets/js/main.js"/>
 
-		<script src="assets/js/Chart.bundle.js"/>
 		<script src="assets/js/Chart.bundle.min.js"/>
 		
 		<script>
