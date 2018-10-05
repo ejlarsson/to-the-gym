@@ -11,7 +11,7 @@ if (session_id() == '' || !isset($_SESSION['user_uuid'])) {
 		include_once 'sql.php';
 	
 		if(createBid(getConnection(), $user_uuid, $bid)) {
-			header('Location: /bids.php');
+			header('Location: /bids.php#show_bids');
 		} else {
 			header('Location: /');
 		}
