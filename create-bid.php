@@ -13,7 +13,6 @@ if (session_id() == '' || !isset($_SESSION['user_uuid'])) {
 		if(createBid(getConnection(), $user_uuid, $bid)) {
 			header('Location: /bids.php');
 		} else {
-			exit;
 			header('Location: /');
 		}
 	}
