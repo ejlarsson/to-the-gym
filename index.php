@@ -94,7 +94,7 @@ include_once('session.php');
 									<? 
 									$rows = queryExerciseTypes(getConnection());
 									while ($row = pg_fetch_assoc($rows)) {
-										echo '<option value="'.$row["tid"].'">'.$row["type_name"].'</option>';
+										echo '<option value="'.$row["tid"].'">'.$row["type"].'</option>';
 									}
 									?>
 								</select>
