@@ -90,10 +90,13 @@ include_once('session.php');
 							<div class="col-12">
 								<select name="exercise_type" id="exercise_type" <? if ($no_current_bid) echo 'disabled'; ?>>
 									<option value="">- Exercise type -</option>
-									<option value="1">This</option>
-									<option value="2">Does</option>
-									<option value="3">Not</option>
-									<option value="4">Work</option>
+									
+									<? 
+									$rows = queryExerciseTypes(getConnection());
+									while ($row = pg_fetch_assoc($rows)) {
+										echo '<option value="'.$row["tid"].'">'.$row["type_name"].'</option>';
+									}
+									?>
 								</select>
 							</div>
 							<div class="col-12">

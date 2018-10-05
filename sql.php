@@ -175,4 +175,12 @@ function queryUsers($conn, $user_uuid = NULL, $login = NULL) {
 	
 	return pg_query_params($conn, $query, $arr);
 }
+
+function queryExerciseTypes($conn) {
+	$query = 'SELECT t.id AS tid, t.name AS type_name FROM ttg.exercise_type t ORDER BY t.id ASC';
+	$arr = $array();
+	
+	return pg_query_params($conn, $query, $arr);
+}
+
 ?>

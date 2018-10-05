@@ -64,6 +64,14 @@ INSERT INTO period (id, name, status) VALUES (1, 'Oct-18', 'PAST');
 INSERT INTO period (id, name, status) VALUES (2, 'Nov-18', 'CURRENT');
 INSERT INTO period (id, name, status) VALUES (3, 'Dec-18', 'FUTURE');
 
+INSERT INTO exercise_type ('value') VALUES ('Running');
+INSERT INTO exercise_type ('value') VALUES ('Cykling/Elliptical');
+INSERT INTO exercise_type ('value') VALUES ('Instructor led hour');
+INSERT INTO exercise_type ('value') VALUES ('Weights and etc.'); 
+INSERT INTO exercise_type ('value') VALUES ('Crosscountry');
+INSERT INTO exercise_type ('value') VALUES ('Sports (fotball, handball, ...)');
+INSERT INTO exercise_type ('value') VALUES ('Other');
+
 INSERT INTO exercise_user (login, name) VALUES ('test', 'test');
 INSERT INTO exercise_user (login, not_secure_pw, name) VALUES ('admin', 'admin', 'admin');
 
