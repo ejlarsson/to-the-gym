@@ -112,23 +112,16 @@ function createBid($conn, $user_uuid, $bid) {
 	if(isset($bid_id)) return FALSE;
 
 	$periods = queryPeriods($conn, 'CURRENT');
-	$period = pg_fetch_assoc($res);
-
-	echo '<pre>'; print_r($period); echo '</pre>';
-
+	$period = pg_fetch_row($periods);
 	
 	$users = queryUsers($conn, $user_uuid);
-	$user = pg_fetch_assoc($res);
-
-	echo '<pre>'; print_r($user); echo '</pre>';
+	$user = pg_fetch_row($users);
 	
 	$arr = array();
 	$arr["number"] = $bid;
 	$arr["exercise_user_id"] = $user[0];
 	$arr["period_id"] = $period[0];
 	
-	echo '<pre>'; print_r($arr); echo '</pre>';
-	exit;
 	$res = pg_insert($conn, 'ttg.bid', $arr);
 	exit;
 	if ($res) {
@@ -175,9 +168,6 @@ function queryUsers($conn, $user_uuid = NULL, $login = NULL) {
 	}
 	$query = $query . ' ORDER BY u.id ASC';
 	
-	echo $query;
-	echo '<pre>'; print_r($arr); echo '</pre>';
-
 	return pg_query_params($conn, $query, $arr);
 }
 ?>

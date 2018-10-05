@@ -9,9 +9,8 @@ if (session_id() == '' || !isset($_SESSION['user_uuid'])) {
 		$user_uuid = $_SESSION['user_uuid'];
 		
 		include_once 'sql.php';
-		$res = createBid(getConnection(), $user_uuid, $bid);		
-
-		if($res) {
+	
+		if(createBid(getConnection(), $user_uuid, $bid)) {
 			header('Location: /bids.php');
 		} else {
 			exit;
