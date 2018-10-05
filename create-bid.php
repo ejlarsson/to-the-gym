@@ -10,14 +10,11 @@ if (session_id() == '' || !empty($_SESSION['user_uuid'])) {
 		$user_uuid = $_SESSION['user_uuid'];
 		
 		include_once 'sql.php';
-				
-		if(createBid(getConnection(), $user_uuid, $bid)) {
+		$res = createBid(getConnection(), $user_uuid, $bid);		
+		if($res) {
 			header('Location: /bids.php');
-			echo "<noscript>Bid is registered.</noscript>";
 		} else {
 			header('Location: /');
-			echo "<script>alert('Could not create bid');</script>";
-			echo "<noscript>Could not create bid</noscript>";
 		}
 	}
 }
