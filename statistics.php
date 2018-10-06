@@ -1,19 +1,3 @@
-<?php
-/*include_once 'session.php';
-
-if (session_id() == '' || !isset($_SESSION['user_uuid'])) {
-	header('Location: /'); //redirect to main
-} else {
-	include_once 'sql.php';
-	
-	//$res = queryExercises(getConnection(), NULL, $status, NULL);
-	
-	/*if (!$res) {
-		echo "An error occurred.\n";
-		exit;
-	}*/
-}*/
-?>
 <html>
 	<head>
 		<title>Let's go to the gym</title>
@@ -24,15 +8,14 @@ if (session_id() == '' || !isset($_SESSION['user_uuid'])) {
 			<link rel="stylesheet" href="assets/css/noscript.css" />
 		</noscript>
 		<!-- Scripts -->
-		<script src="assets/js/jquery.min.js" />
+		<script src="assets/js/Chart.bundle.min.js"/>
+<!--		<script src="assets/js/jquery.min.js" />
 		<script src="assets/js/jquery.scrolly.min.js"/>
 		<script src="assets/js/browser.min.js"/>
 		<script src="assets/js/breakpoints.min.js"/>
 		<script src="assets/js/util.js"/>
 		<script src="assets/js/main.js"/>
-
-		<script src="assets/js/Chart.bundle.min.js"/>
-		
+-->
 		<script>
 
 		var data = {
