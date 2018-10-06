@@ -8,27 +8,17 @@
 			<link rel="stylesheet" href="assets/css/noscript.css" />
 		</noscript>
 		
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/js/jquery.scrolly.min.js"></script>
+		<script src="assets/js/browser.min.js"></script>
+		<script src="assets/js/breakpoints.min.js"></script>
+		<script src="assets/js/util.js"></script>
+		<script src="assets/js/main.js"></script>
+
+		<script src="assets/js/chart.bundle.min.js"></script>
+		<script src="assets/js/statistics.js"></script>
 		<script>
-
-		var data = {
-			labels: ['Arne', 'Bert', 'Carl', 'David'],
-			datasets: [{
-				label: 'Bid',
-				backgroundColor: 'rgba(255, 99, 132, 0.2)',
-				borderColor: 'rgba(255,99,132,1)',
-				borderWidth: 1,
-				data: [5, 10, 12, 5]
-			}, {
-				label: 'Exercised',
-				backgroundColor: 'rgba(54, 162, 235, 0.2)',
-				borderColor: 'rgba(54, 162, 235, 1)',
-				borderWidth: 1,
-				data: [2, 3, 4, 6]
-			}]
-
-		};
-
-
+			window.onload = horizontalBar;
 		</script>
 	</head>
 	<body>
@@ -74,26 +64,6 @@
 		<!-- Footer -->
 		<footer id="footer">
 		</footer>		
-
-		<!-- Scripts -->
-		<script src="assets/js/jquery.min.js" />
-		<script src="assets/js/jquery.scrolly.min.js"/>
-		<script src="assets/js/browser.min.js"/>
-		<script src="assets/js/breakpoints.min.js"/>
-		<script src="assets/js/util.js"/>
-		<script src="assets/js/main.js"/>
-		
-		<script src="assets/js/Chart.bundle.min.js"/>
-		<script src="assets/js/statistics.js"/>
-		<script>
-
-
-
-
-// ...
-// at the end of the file...
-window.addEventListener ? window.addEventListener("load",horizontalBar,false) : window.attachEvent && window.attachEvent("onload",horizontalBar);
-
 
 	</body>
 </html>
