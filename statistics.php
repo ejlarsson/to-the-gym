@@ -28,7 +28,7 @@
 
 		};
 
-		window.onload = function() {
+/*		window.onload = function() {
 			var ctx = document.getElementById('canvas').getContext('2d');
 			alert('asdf');
 			window.myHorizontalBar = new Chart(ctx, {
@@ -60,6 +60,10 @@
 					}
 				}
 			});
+		};*/
+		
+		window.onload = function() {
+			alert('asdf2');
 		};
 
 		</script>
