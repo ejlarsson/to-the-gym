@@ -9,13 +9,13 @@
 		</noscript>
 		<!-- Scripts -->
 		<script src="assets/js/Chart.bundle.min.js"/>
-<!--		<script src="assets/js/jquery.min.js" />
+		<script src="assets/js/jquery.min.js" />
 		<script src="assets/js/jquery.scrolly.min.js"/>
 		<script src="assets/js/browser.min.js"/>
 		<script src="assets/js/breakpoints.min.js"/>
 		<script src="assets/js/util.js"/>
 		<script src="assets/js/main.js"/>
--->
+		
 		<script>
 
 		var data = {
@@ -38,7 +38,7 @@
 
 		window.onload = function() {
 			var ctx = document.getElementById('canvas').getContext('2d');
-
+			alert('asdf');
 			window.myHorizontalBar = new Chart(ctx, {
 				type: 'horizontalBar',
 				data: data,
