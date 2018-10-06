@@ -7,14 +7,6 @@
 		<noscript>
 			<link rel="stylesheet" href="assets/css/noscript.css" />
 		</noscript>
-		<!-- Scripts -->
-		<script src="assets/js/Chart.bundle.min.js"/>
-		<script src="assets/js/jquery.min.js" />
-		<script src="assets/js/jquery.scrolly.min.js"/>
-		<script src="assets/js/browser.min.js"/>
-		<script src="assets/js/breakpoints.min.js"/>
-		<script src="assets/js/util.js"/>
-		<script src="assets/js/main.js"/>
 		
 		<script>
 
@@ -115,6 +107,15 @@
 		<!-- Footer -->
 		<footer id="footer">
 		</footer>		
+
+		<!-- Scripts -->
+		<script src="assets/js/Chart.bundle.min.js"/>
+		<script src="assets/js/jquery.min.js" />
+		<script src="assets/js/jquery.scrolly.min.js"/>
+		<script src="assets/js/browser.min.js"/>
+		<script src="assets/js/breakpoints.min.js"/>
+		<script src="assets/js/util.js"/>
+		<script src="assets/js/main.js"/>
 
 	</body>
 </html>
