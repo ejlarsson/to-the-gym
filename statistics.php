@@ -18,7 +18,27 @@
 		<script src="assets/js/Chart.bundle.min.js"></script>
 		<script src="assets/js/statistics.js"></script>
 		<script>
-			window.onload = horizontalBar;
+			var data = {
+						labels: ['Arne', 'Bert', 'Carl', 'David'],
+						datasets: [{
+							label: 'Bid',
+							backgroundColor: 'rgba(255, 99, 132, 0.2)',
+							borderColor: 'rgba(255,99,132,1)',
+							borderWidth: 1,
+							data: [5, 10, 12, 5]
+						}, {
+							label: 'Exercised',
+							backgroundColor: 'rgba(54, 162, 235, 0.2)',
+							borderColor: 'rgba(54, 162, 235, 1)',
+							borderWidth: 1,
+							data: [2, 3, 4, 6]
+						}]
+
+					};
+
+			window.onload = function() {
+				horizontalBar(data);
+			};
 		</script>
 	</head>
 	<body>
