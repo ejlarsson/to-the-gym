@@ -15,7 +15,7 @@
 		<script src="assets/js/util.js"></script>
 		<script src="assets/js/main.js"></script>
 
-		<script src="assets/js/chart.bundle.min.js"></script>
+		<script src="assets/js/Chart.bundle.min.js"></script>
 		<script src="assets/js/statistics.js"></script>
 		<script>
 			window.onload = horizontalBar;
