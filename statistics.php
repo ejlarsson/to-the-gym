@@ -1,3 +1,15 @@
+<?php
+	include_once 'sql.php';
+	$res = queryBids(getConnection(), NULL, 'PAST');
+	
+	$names = NULL;
+	$bids = NULL;
+	$exercises = NULL;
+	/*
+	while($row = pg_fetch_row($res)) {
+		if(!empty($names)) $names = $names . ', ' $row[
+	}*/
+?>
 <html>
 	<head>
 		<title>Let's go to the gym</title>
@@ -18,26 +30,26 @@
 		<script src="assets/js/Chart.bundle.min.js"></script>
 		<script src="assets/js/statistics.js"></script>
 		<script>
-			var data = {
-						labels: ['Arne', 'Bert', 'Carl', 'David'],
+			var pastPeriod = {
+						labels: [<? echo names; ?>],
 						datasets: [{
 							label: 'Bid',
 							backgroundColor: 'rgba(255, 99, 132, 0.2)',
 							borderColor: 'rgba(255,99,132,1)',
 							borderWidth: 1,
-							data: [5, 10, 12, 5]
+							data: [<? echo bids; ?>]
 						}, {
 							label: 'Exercised',
 							backgroundColor: 'rgba(54, 162, 235, 0.2)',
 							borderColor: 'rgba(54, 162, 235, 1)',
 							borderWidth: 1,
-							data: [2, 3, 4, 6]
+							data: [<? echo exercises; ?>]
 						}]
 
 					};
 
 			window.onload = function() {
-				horizontalBar(data);
+				horizontalBar(pastPeriod);
 			};
 		</script>
 	</head>
@@ -57,6 +69,49 @@
 			</div>
 		</header>
 
+		<section id="show_exercises" class="wrapper">
+			<div class="inner">
+
+				<header class="major">
+					<h2>Your bids</h2>
+				</header>
+				
+				<section>
+					<div class="table-wrapper">
+						<table class="alt">
+							<thead>
+								<tr>
+									<th>Name</th>
+									<th>Total</th>
+								</tr>
+							</thead>
+							<tbody>
+								<? 	
+									$res = queryUserStatistics(getConnection(), 'CURRENT');
+									
+									while ($row = pg_fetch_assoc($res)) { 
+								
+								?>
+								
+								<tr>
+									<td>
+										<? echo $row['user_name']; ?>
+									</td>
+									<td>
+										<? echo $row['total']; ?>
+									</td>
+								</tr>
+								<? } ?>
+
+							</tbody>
+							
+						</table>
+					</div>
+				</section>
+			</div>
+		</section>
+
+		
 		<section id="show_statistics" class="wrapper">
 			<div class="inner">
 

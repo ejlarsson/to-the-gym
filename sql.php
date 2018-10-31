@@ -183,4 +183,24 @@ function queryExerciseTypes($conn) {
 	return pg_query_params($conn, $query, $arr);
 }
 
+function queryUserStatistics($conn, $period_status = NULL) {
+	
+	$query = 	'SELECT u.name AS user_name, p.name AS period_name, p.status AS period_status, b.number AS bid, '.
+				'(SELECT COUNT(*) FROM ttg.exercise e WHERE e.bid_id = b.id GROUP BY e.bid_id) AS total '.
+				'FROM ttg.exercise_user u '.
+				'INNER JOIN ttg.bid b ON u.id = b.exercise_user_id '. 
+				'INNER JOIN ttg.period p ON p.id = b.period_id';
+
+	$arr = array();
+	if (isset($period_status))	{
+		$query = $query . ' WHERE p.status = $1';
+		$arr[] = $period_status;
+	}
+	
+	$query = $query . ' ORDER BY total DESC';
+		
+	return pg_query_params($conn, $query, $arr);
+}
+
+
 ?>
