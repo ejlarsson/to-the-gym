@@ -69,11 +69,11 @@
 			</div>
 		</header>
 
-		<section id="show_exercises" class="wrapper">
+		<section id="show_statistics" class="wrapper">
 			<div class="inner">
 
 				<header class="major">
-					<h2>Your bids</h2>
+					<h2>Exercises during current period</h2>
 				</header>
 				
 				<section>
@@ -111,8 +111,8 @@
 			</div>
 		</section>
 
-		
-		<section id="show_statistics" class="wrapper">
+<!--		
+		<section id="todo" class="wrapper">
 			<div class="inner">
 
 				<header class="major">
@@ -135,7 +135,7 @@
 
 			</div>
 		</section>
-
+-->
 		<!-- Footer -->
 		<footer id="footer">
 		</footer>		
